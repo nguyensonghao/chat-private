@@ -3,7 +3,7 @@
 angular.module('chat.pravite', []).controller('PraviteController', ['$scope', '$rootScope', '$ionicPopup', 'localServ', '$ionicPopover', 'dialogServ', 'ultiServ', '$stateParams', '$ionicScrollDelegate', '$state',
     function ($scope, $rootScope, $ionicPopup, localServ, $ionicPopover, dialogServ, ultiServ, $stateParams, $ionicScrollDelegate, $state) {
 
-    var socket = io.connect('http://127.0.0.1:8080');
+    var socket = io.connect('http://crazyjapanese.com:8080');
     $scope.form = {};
     $scope.userReceive = {
         username : $stateParams.username,

@@ -1,0 +1,51 @@
+<ion-view view-title="{{userReceive.username}}">
+  <ion-nav-buttons>
+        <span class="icon ion-ios-arrow-left icon-back" ng-click="backScreen()">
+        </span>
+  </ion-nav-buttons>
+  <ion-content class="has-header" scroll="false">
+    <div class="chat-pravite-screen">
+		<div class="content-chat-box">
+			<ion-list>
+			  <ion-item ng-repeat="message in list_message">
+			  	<div class="my_message" ng-if="message.flag == 0">
+			  		<div class="message"> 
+						<div class="avatar">
+							{{ message.my_username.slice(0, 1).toUpperCase() }}
+						</div> 
+						<div class="text">{{ message.message }}</div>
+					</div>
+			  	</div>
+
+			  	<div class="your_message"  ng-if="message.flag == 1">
+			  		<div class="message"> 
+						<div class="avatar">
+							{{ message.your_username.slice(0, 1).toUpperCase() }}
+						</div> 
+						<div class="text">{{ message.message }}</div>
+					</div>
+			  	</div>
+				
+			  </ion-item>
+			</ion-list>
+		</div>
+		<!-- <div class="enter-chat-box">
+			<label class="item item-input">
+				<input type="text" placeholder="Nhập tin nhắn" id="enter-chat-pravite-message">
+				<button class="button button-positive button-small"
+					 ng-click="form.sendMessage()">
+					Send
+				</button>
+			</label>
+		</div> -->
+		<ion-footer-bar align-title="left" class="bar-lingth">
+		  	<div class="item item-input">
+				<input type="text" placeholder="Nhập tin nhắn" id="enter-chat-pravite-message">
+				<span class="icon ion-android-send" ng-click="form.sendMessage()">
+					
+				</span>
+			</div>
+		</ion-footer-bar>
+    </div>
+  </ion-content>
+</ion-view>

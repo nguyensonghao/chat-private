@@ -1,0 +1,77 @@
+<ion-view class="chat-public-screen" view-title="Chat cùng Mazii">
+	<ion-nav-buttons>
+        <span class="icon ion-ios-gear icon-back" ng-click="showBoxSetting()">
+        </span>
+    </ion-nav-buttons>
+
+	<div class="box-setting">
+		<ul class="list">
+			<li class="item title-setting">Cài đặt</li>
+			<li class="item change-username" ng-click="changeUsername()">
+				Đổi tên dùng
+			</li>
+		</ul>
+	</div>
+
+	<div class="cover" ng-click="showBoxSetting()"></div>
+	<ul class="menu-tab">
+		<li ng-click="change_tab(1)" ng-class="tab_1">
+			<span class="icon ion-ios-people"></span>
+			<p>Chat nhóm</p>
+		</li>
+		<li ng-click="change_tab(2)" ng-class="tab_2">
+			<span class="icon ion-ios-home"></span>
+			<p>Chat riêng</p>
+			<span class="new-message" ng-if="newMessage > 0">
+				{{ newMessage }}
+			</span>
+		</li>
+		<li ng-click="change_tab(3)" ng-class="tab_3">
+			<span class="icon ion-ios-paperplane"></span>
+			<p>Danh sách</p>
+		</li>
+	</ul>
+
+	<ion-content class="has-header">
+
+		<div class="box-chat">
+			<div class="chat-public" ng-if="tab_active == 1">
+				<div class="list-message">
+					<div class="message" ng-repeat="msg in listMessage"> 
+						<div class="avatar">{{ msg.username }}</div> 
+						<div class="text">{{ msg.message }}</div>
+					</div>
+				</div>
+			</div>
+			<div class="chat-private" ng-if="tab_active == 2">
+				<div class="list" ng-repeat="messageRecive in listMessageRecive">
+					<a class="item item-avatar"
+					ng-click="redirectMessagePravite(messageRecive.your_username, messageRecive.your_email)">
+					  <span class="image">
+					  	{{ messageRecive.your_username.slice(0, 1).toUpperCase() }}
+					  </span>
+					  <h2 class="username">{{ messageRecive.your_username }}</h2>
+					  <p class="message">{{ messageRecive.message }}</p>
+					  <span class="time">{{ messageRecive.date }}</span>
+					</a>
+				</div>
+			</div>
+			<div class="chat-list-user" ng-if="tab_active == 3">
+				<div class="list list-user">
+					<a class="item item-avatar" ng-repeat="user in listUser" 
+					ng-click="sendMessagePrivate(user)" ng-if="user.status == 1">
+						<span class="avatar">{{ user.username.slice(0, 1).toUpperCase() }}</span>
+						<h2 class="username">{{ user.username }}</h2>
+					</a>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+
+	<ion-footer-bar align-title="left" class="bar-lingth" ng-if="tab_active == 1">
+	    <input type="text" placeholder="Viết tin nhắn" id="enter-chat-message">
+		<i class="icon ion-android-send icon-send" 
+		ng-click="formChat.sendChat()"></i>
+	</ion-footer-bar>
+
+</ion-view>

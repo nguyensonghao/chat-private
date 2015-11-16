@@ -1,0 +1,33 @@
+
+<ion-modal-view class="modal enter-info-modal">
+<form name="formLogin">
+    <ion-content class="padding">
+        <p class="title-setting">
+            <span class="ion-ios-personadd"></span> 
+            Nhập thông tin của bạn vào trước
+        </p>
+        <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" placeholder="Tên sử dụng" ng-model="showLoginModal.username" required>
+          </label>
+
+          <label class="item item-input">
+            <input type="email" placeholder="Email" ng-model="showLoginModal.email" required
+            ng-disabled="showLoginModal.disabledEmail">
+          </label>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar>
+        <div class="title"></div>
+        <div class="buttons button-right">
+            <button class="button button-positive button-small" ng-click="showLoginModal.showLoginSave(showLoginModal.username, showLoginModal.email)" 
+            ng-disabled="!formLogin.$valid">
+                Lưu
+            </button>
+            <button class="button button-light button-small" ng-click="showLoginModal.showLoginClose()">Thoát</button>
+        </div>
+
+    </ion-footer-bar>
+</form>
+</ion-modal-view>

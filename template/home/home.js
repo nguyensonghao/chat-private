@@ -15,7 +15,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     $scope.newMessage = 0;
 
     var showboxSetting = false;
-    var socket = io.connect('http://crazyjapanese.com:8080');
+    var socket = io.connect(SERVER_ADRESS);
     var user = localServ.getItem('user');
     var list_email_pravite = [];
     var list_color = ['#71A2F7', '#FF8585', '#FCFF47', '#1CB71C'];

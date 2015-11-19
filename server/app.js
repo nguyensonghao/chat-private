@@ -2,7 +2,7 @@ var socketIO = require('socket.io'),
 util = require('./util');
 http = require('http'),
 
-port = process.env.PORT || 8080,
+port = process.env.PORT || 8989,
 ip = process.env.IP || '127.0.0.1',
 
 // create server 

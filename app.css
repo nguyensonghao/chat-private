@@ -129,10 +129,11 @@ ion-item {
     margin-top: 10px;
     padding-left: 6px;
     position: relative;
+    display: flex;
 }
 
 .chat-public .message .text, .chat-pravite-screen .message .text{
-    margin-left: 40px;
+    margin-left: 10px;
     padding: 6px;
     padding-right: 10px;
     background: #F3F3F3;

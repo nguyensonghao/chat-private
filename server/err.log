@@ -1,0 +1,10 @@
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/mongo_client.js:408
+          throw err
+                ^
+TypeError: Cannot call method 'collection' of null
+    at /home/haons/chat-server/chat-private/server/app.js:107:35
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/mongo_client.js:405:11
+    at process._tickCallback (node.js:415:13)
+Option match origin procotol is not valid. Please refer to the README.

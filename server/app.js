@@ -10,6 +10,15 @@ server = http.createServer().listen(port, ip, function(){
     console.log("Listening on http://127.0.0.1:" + port + "/");
 }),
 
+/*server = http.createServer(function(request, response) {
+    response.writeHead(200);
+    response.write("Start server");
+    response.end();
+});
+
+server.listen(port);*/
+
+
 // config socket.io
 io = socketIO.listen(server);
 io.set('match origin procotol', true);

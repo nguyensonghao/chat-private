@@ -59,7 +59,7 @@ io.sockets.on('connect', function (socket) {
                         if (e.email == user.email) {
                             listUser[i].status = 1;
                             console.log(listUser);
-                            socket.emit('get-list-user', listUser);
+                            io.sockets.emit('get-list-user', listUser);
                             break;
                         }
                     }
@@ -318,7 +318,7 @@ io.sockets.on('connect', function (socket) {
                         var e = listUser[i];
                         if (e.email == current_user.email) {
                             listUser[i].status = 0;
-                            socket.emit('get-list-user', listUser);
+                            io.sockets.emit('get-list-user', listUser);
                             console.log('User offline');
                             console.log(listUser);
                             break;

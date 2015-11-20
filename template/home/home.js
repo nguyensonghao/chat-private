@@ -183,6 +183,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     socket.on('get-list-user', function (list_user) {
         var size_of_list_user = list_user.length;
         $scope.listUser = [];
+        $scope.$apply();
         for (var i = 0; i < size_of_list_user; i++) {
             var user_current = list_user[i];
             if (user == null || list_user[i].email != user.email) {

@@ -111,12 +111,13 @@ io.sockets.on('connect', function (socket) {
     // Load more message
     socket.on('load-more-message', function (index) {
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            console.log(currentIndex);
             if(err) { 
                 console.log('erorr connect server mongodb');
             }
             console.log(currentIndex);
             var collection_message = db.collection('message');  
-            collection_message.find().sort({_id: -1}).limit(ITEM).skip(index * ITEM).toArray(function (err, item) {
+            collection_message.find().sort({_id: -1}).limit(ITEM).skip(index * ITEM + currentIndex).toArray(function (err, item) {
                 if (err) {
                     console.log('error load more message');
                 } else {
@@ -355,7 +356,6 @@ io.sockets.on('connect', function (socket) {
                             listUser[i].status = 0;
                             io.sockets.emit('get-list-user', listUser);
                             console.log('User offline');
-                            console.log(listUser);
                             break;
                         }
                     }

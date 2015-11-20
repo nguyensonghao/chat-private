@@ -6,9 +6,19 @@ port = process.env.PORT || 8989,
 ip = process.env.IP || '127.0.0.1',
 
 // create server 
-server = http.createServer().listen(port, ip, function(){
+/*server = http.createServer().listen(port, ip, function(){
     console.log('Started Socket.IO');
-}),
+}),*/
+
+var server = http.createServer(function(request, response) {
+    response.writeHead(200);
+    response.write("Start server");
+    response.end();
+});
+
+server.listen(port);
+ 
+console.log("Listening on http://127.0.0.1:" + port + "/");
 
 // config socket.io
 io = socketIO.listen(server);
@@ -59,7 +69,7 @@ io.sockets.on('connect', function (socket) {
                         if (e.email == user.email) {
                             listUser[i].status = 1;
                             console.log(listUser);
-                            socket.emit('get-list-user', listUser);
+                            io.sockets.emit('get-list-user', listUser);
                             break;
                         }
                     }
@@ -318,7 +328,7 @@ io.sockets.on('connect', function (socket) {
                         var e = listUser[i];
                         if (e.email == current_user.email) {
                             listUser[i].status = 0;
-                            socket.emit('get-list-user', listUser);
+                            io.sockets.emit('get-list-user', listUser);
                             console.log('User offline');
                             console.log(listUser);
                             break;

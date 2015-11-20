@@ -357,14 +357,19 @@ ion-item {
 }
 
 .your_message .message .avatar {
-    float: right;
     background-color: #DC62FD;
+    position: absolute;
+    right: 0;
 }
 
 .your_message .message .text {
     margin-left: 0px;
     margin-right: 40px;
     background-color: #CFEFFD;
+}
+
+.your_message .message {
+    float: right;
 }
 
 .chat-pravite-screen ion-footer-bar .item {

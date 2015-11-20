@@ -38,7 +38,9 @@
 			<div class="chat-public" ng-if="tab_active == 1">
 				<div class="list-message">
 					<div class="message" ng-repeat="msg in listMessage"> 
-						<div class="avatar">{{ msg.username }}</div> 
+						<div class="avatar">
+							{{ msg.username }}
+						</div> 
 						<div class="text">{{ msg.message }}</div>
 					</div><br>
 				</div>

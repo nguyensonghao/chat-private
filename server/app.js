@@ -6,19 +6,9 @@ port = process.env.PORT || 9500,
 ip = process.env.IP || '127.0.0.1',
 
 // create server 
-/*server = http.createServer().listen(port, ip, function(){
-    console.log('Started Socket.IO');
-}),*/
-
-var server = http.createServer(function(request, response) {
-    response.writeHead(200);
-    response.write("Start server");
-    response.end();
-});
-
-server.listen(port);
- 
-console.log("Listening on http://127.0.0.1:" + port + "/");
+server = http.createServer().listen(port, ip, function(){
+    console.log("Listening on http://127.0.0.1:" + port + "/");
+}),
 
 // config socket.io
 io = socketIO.listen(server);
@@ -99,6 +89,25 @@ io.sockets.on('connect', function (socket) {
         socket.emit('get-list-user', listUser);
     });
 
+    socket.on('get-list-data', function () {
+        MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            if(err) { 
+                console.log('erorr connect server mognodb');
+            }
+
+            var collection_message = db.collection('message');
+            collection_message.find().toArray(function (err, item) {
+                if (err) {
+                    console.log('error get list message');
+                } else {
+                    socket.emit('get-list-message', item);
+                }
+            })
+
+            socket.emit('get-list-user', listUser);
+        });        
+    })
+
     // Người dùng lần đầu đăng nhập vào hệ thống
     
     socket.on('user-join-public', function (user) {
@@ -157,6 +166,7 @@ io.sockets.on('connect', function (socket) {
             content : msg.message,
             date_send : util.get_time()
           }
+          io.sockets.emit('receive-message-public', msg);
           collection.insert(message, function (err, result) {
             if (err) {
                 console.log('insert message err');
@@ -211,7 +221,7 @@ io.sockets.on('connect', function (socket) {
                 your_username : userReceive.username,
                 your_email : userReceive.email,
                 message : msg.message,
-                date : util.get_date_time(),
+                date : util.get_time(),
                 flag : 0
               }
 

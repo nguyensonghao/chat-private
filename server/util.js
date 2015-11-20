@@ -39,6 +39,12 @@ methods.get_date_time = function () {
     return datetime;   
 }
 
+methods.random_color = function () {
+    var list_color = ['#71A2F7', '#FF8585', '#FCFF47', '#1CB71C'];
+    var rand = list_color[Math.floor(Math.random() * list_color.length)];
+    return rand;
+}
+
 
 // Hàm khởi tạo khi người dùng vào hệ thống
 methods.contruct_systerm = function (socket, MongoClient, listUser, users) {
@@ -82,5 +88,6 @@ module.exports = {
     check_exits_email : methods.check_exits_email,
     get_time : methods.get_time,
     get_date_time : methods.get_date_time,
-    contruct_systerm : methods.contruct_systerm
+    contruct_systerm : methods.contruct_systerm,
+    random_color : methods.random_color
 }

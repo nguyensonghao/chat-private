@@ -23,6 +23,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     if (user != null) {
         socket.emit('reset-socket-user', user);
         socket.emit('get-list-message-private-in-public', user);
+        socket.emit('get-list-data');
     }
 
     // Hàm nhận tin danh sách tin nhắn private từ server 
@@ -124,7 +125,6 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
                     return;
 
                 // Gửi tin nhắn có 1 user login
-                console.log(data);
                 socket.emit('user-join-public', data);
             });
         } else {
@@ -167,6 +167,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
 
     // Lấy danh sách tin nhắn của hệ thống
     socket.on('get-list-message', function (list_message) {
+        console.log('receive list message');
         var size_of_list_message = list_message.length;
         for (var i = 0; i < size_of_list_message; i++) {
             
@@ -191,7 +192,6 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
             }
         }
         $scope.$apply();
-        console.log($scope.listUser);
         // $ionicScrollDelegate.scrollBottom(true);
     })
 

@@ -1,4 +1,5 @@
 SERVER_ADRESS = 'http://128.199.117.217:8989';
+// SERVER_ADRESS = 'http://127.0.0.1:8888';
 angular.module('App', [
     'ionic',
     'chat.home',

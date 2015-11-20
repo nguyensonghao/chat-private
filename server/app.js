@@ -77,12 +77,11 @@ io.sockets.on('connect', function (socket) {
         }
 
         var collection_message = db.collection('message');
-        collection_message.find().limit(ITEM).skip(0).toArray(function (err, item) {
+        collection_message.find().sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
             if (err) {
                 console.log('error get list message');
             } else {
                 socket.emit('get-list-message', item);
-                console.log(item.length);
             }
         })
 
@@ -97,7 +96,7 @@ io.sockets.on('connect', function (socket) {
             }
 
             var collection_message = db.collection('message');
-            collection_message.find().limit(ITEM).skip(0).toArray(function (err, item) {
+            collection_message.find().sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
                 } else {
@@ -115,9 +114,9 @@ io.sockets.on('connect', function (socket) {
             if(err) { 
                 console.log('erorr connect server mongodb');
             }
-
-            var collection_message = db.collection('message');
-            collection_message.find().limit(ITEM).skip(index * 10 + currentIndex).toArray(function (err, item) {
+            console.log(currentIndex);
+            var collection_message = db.collection('message');  
+            collection_message.find().sort({_id: -1}).limit(ITEM).skip(index * ITEM).toArray(function (err, item) {
                 if (err) {
                     console.log('error load more message');
                 } else {
@@ -134,7 +133,7 @@ io.sockets.on('connect', function (socket) {
         // if (util.check_exits_user(user, listUser)) {
         //     socket.emit('error-login', -1);
         if (util.check_exits_email(user, listUser)) {
-            socket.emit('error-login', -1);
+            socket.emit('error-login', 1);
         } else {
 
             // save list user in database
@@ -145,7 +144,6 @@ io.sockets.on('connect', function (socket) {
 
               var collection = db.collection('user');
               var user_database = {
-                _id : util.get_time(),
                 username : user.username,
                 email : user.email,
                 date_register : util.get_time(),
@@ -182,7 +180,6 @@ io.sockets.on('connect', function (socket) {
 
           var collection = db.collection('message');
           var message = {
-            _id : util.get_time(),
             username : msg.user.username,
             content : msg.message,
             date_send : util.get_time()
@@ -235,7 +232,6 @@ io.sockets.on('connect', function (socket) {
               var collection = db.collection('message_private');
               // Lưu tin nhắn cho người gửi
               var message_send = {
-                _id : util.get_time(),
                 my_username : userSend.username,
                 my_email : userSend.email,
                 your_username : userReceive.username,
@@ -258,7 +254,6 @@ io.sockets.on('connect', function (socket) {
 
               // Lưu tin nhắn cho người nhận
               var message_recieve = {
-                _id : util.get_time()+'receive',
                 my_username : userReceive.username,
                 my_email : userReceive.email,
                 your_username : userSend.username,

@@ -175,7 +175,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
                 username : list_message[i].username.slice(0, 1).toUpperCase(),
                 message : list_message[i].content
             }
-            $scope.listMessage.push(message);
+            $scope.listMessage.unshift(message);
         }
         $scope.$apply();
     })

@@ -32,12 +32,8 @@ var j = schedule.scheduleJob(rule, function(){
 	    }
 	  })
 
-	});
-
-	// xoa tin nhan private qua 1 ngay
-	MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
-	  var collection = db.collection('message_private');
-	  collection.find().toArray(function (err, item) {
+	  var collection_private = db.collection('message_private');
+	  collection_private.find().toArray(function (err, item) {
 	    var sizeofMessage = item.length;
 	    for (var i = 0; i < sizeofMessage; i++) {
 	    	var currentTime = new Date(util.get_time());
@@ -55,7 +51,5 @@ var j = schedule.scheduleJob(rule, function(){
 	  })
 
 	});
-
-
 
 });

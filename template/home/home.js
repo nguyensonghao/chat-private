@@ -13,12 +13,13 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     $scope.listMessageRecive = [];
     $scope.countMessage = 0;
     $scope.newMessage = 0;
+    $scope.showloadMore = false;
 
     var showboxSetting = false;
     var socket = io.connect(SERVER_ADRESS);
     var user = localServ.getItem('user');
     var list_email_pravite = [];
-    var list_color = ['#71A2F7', '#FF8585', '#FCFF47', '#1CB71C'];
+    var indexMessage = 0; // Số thứ tự để load tin nhắn
 
     if (user != null) {
         socket.emit('reset-socket-user', user);
@@ -167,10 +168,9 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
 
     // Lấy danh sách tin nhắn của hệ thống
     socket.on('get-list-message', function (list_message) {
-        console.log('receive list message');
         var size_of_list_message = list_message.length;
+        $scope.listMessage = [];
         for (var i = 0; i < size_of_list_message; i++) {
-            
             var message = {
                 username : list_message[i].username.slice(0, 1).toUpperCase(),
                 message : list_message[i].content
@@ -232,6 +232,20 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
         $ionicScrollDelegate.scrollBottom();
     })
 
+    socket.on('get-more-message', function (listMessage) {
+        var size = listMessage.length;
+        for (var i = 0; i < size; i++) {
+            var message = {
+                username : listMessage[i].username.slice(0, 1).toUpperCase(),
+                message : listMessage[i].content
+            }
+            $scope.listMessage.unshift(message);
+        }
+        $('.button-loadmore').removeClass('fadeIn');
+        $scope.showloadMore = false;
+        $scope.$apply();
+    })
+
     // Nhận tin nhắn private
     socket.on('receive-message-pravite', function (msg) {
         // Kiểm tra xem tin nhắn mới nhận có là của người đã gửi không
@@ -259,6 +273,24 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
         $ionicScrollDelegate.scrollBottom(true);
 
     })
+
+    // Sự kiện người dùng kéo màn hình lên trên cùng
+    $scope.scroll = function (scrollTop, scrollLeft) {
+        if (scrollTop >= 0 && scrollTop <= 10) {
+            $scope.showloadMore = true;
+            $scope.$apply();
+            $('.button-loadmore').addClass('fadeIn');
+        } else {
+            $scope.showloadMore = false;
+            $('.button-loadmore').removeClass('fadeIn');
+            $scope.$apply();
+        }
+    }
+
+    $scope.loadMore = function () {
+        ++indexMessage;
+        socket.emit('load-more-message', indexMessage);
+    }
 
     $scope.loadDone = true;
     ultiServ.showLoading(false);

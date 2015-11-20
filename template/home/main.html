@@ -14,6 +14,10 @@
 	</div>
 
 	<div class="cover" ng-click="showBoxSetting()"></div>
+	<button class="button button-positive button-small button-loadmore"
+				ng-if="showloadMore" ng-click="loadMore()"> 
+					Load more
+				</button>
 	<ul class="menu-tab">
 		<li ng-click="change_tab(1)" ng-class="tab_1">
 			<span class="icon ion-ios-people"></span>
@@ -32,7 +36,7 @@
 		</li>
 	</ul>
 
-	<ion-content class="has-header">
+	<ion-content class="has-header" on-scroll-complete="scroll(scrollTop, scrollLeft)">
 
 		<div class="box-chat">
 			<div class="chat-public" ng-if="tab_active == 1">

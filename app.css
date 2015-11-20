@@ -406,3 +406,89 @@ ion-nav-bar .title {
 .chat-public-screen .scroll-content, .chat-private-screen .scroll-content {
     bottom : 44px;
 }
+
+.button-loadmore {
+    position: absolute;
+    z-index: 2000;
+    bottom: 60vh;
+    left: calc(50vw - 48px) !important;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    -webkit-animation-name: fadeIn;
+    animation-duration: 0.35s;
+    -webkit-animation-duration: 0.35s;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    visibility: visible !important;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: scale(0);
+    }
+
+    12.5% {
+        transform: scale(0.25);
+    }
+
+    25% {
+        transform: scale(0.5);
+    }
+
+    37.5% {
+        transform: scale(0.75);   
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    62.5 % {
+        transform: scale(1.15);   
+    }
+
+    75% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+        
+    }
+}
+@-webkit-keyframes fadeIn {
+    0% {
+        transform: scale(0);
+    }
+
+    12.5% {
+        transform: scale(0.25);
+    }
+
+    25% {
+        transform: scale(0.5);
+    }
+
+    37.5% {
+        transform: scale(0.75);   
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    62.5 % {
+        transform: scale(1.15);   
+    }
+
+    75% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+        
+    }
+}

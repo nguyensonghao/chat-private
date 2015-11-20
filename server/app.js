@@ -10,16 +10,6 @@ server = http.createServer().listen(port, ip, function(){
     console.log("Listening on http://127.0.0.1:" + port + "/");
 }),
 
-/*server = http.createServer(function(request, response) {
-    response.writeHead(200);
-    response.write("Start server");
-    response.end();
-});
-
-server.listen(port);*/
-
-
-// config socket.io
 io = socketIO.listen(server);
 io.set('match origin procotol', true);
 io.set('origins', '*:*');
@@ -30,6 +20,8 @@ MongoClient = require('mongodb').MongoClient;
 
 var users = {}; 
 var listUser = []; // list user active
+var ITEM = 10;
+var currentIndex = 0; 
 
 // Load list user trong cơ sở dữ liệu
 MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
@@ -55,7 +47,6 @@ io.sockets.on('connect', function (socket) {
               if(err) { 
                 console.log('erorr connect server mognodb');
               }
-
               var collection = db.collection('user');
               collection.update({email : user.email}, {$set: { "status": 1 }}, function (err, re) {
                 if (err) {
@@ -67,7 +58,6 @@ io.sockets.on('connect', function (socket) {
                         var e = listUser[i];
                         if (e.email == user.email) {
                             listUser[i].status = 1;
-                            console.log(listUser);
                             io.sockets.emit('get-list-user', listUser);
                             break;
                         }
@@ -87,11 +77,12 @@ io.sockets.on('connect', function (socket) {
         }
 
         var collection_message = db.collection('message');
-        collection_message.find().toArray(function (err, item) {
+        collection_message.find().limit(ITEM).skip(0).toArray(function (err, item) {
             if (err) {
                 console.log('error get list message');
             } else {
                 socket.emit('get-list-message', item);
+                console.log(item.length);
             }
         })
 
@@ -99,13 +90,14 @@ io.sockets.on('connect', function (socket) {
     });
 
     socket.on('get-list-data', function () {
+        currentIndex = 0;
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
             if(err) { 
                 console.log('erorr connect server mognodb');
             }
 
             var collection_message = db.collection('message');
-            collection_message.find().toArray(function (err, item) {
+            collection_message.find().limit(ITEM).skip(0).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
                 } else {
@@ -115,6 +107,25 @@ io.sockets.on('connect', function (socket) {
 
             socket.emit('get-list-user', listUser);
         });        
+    })
+
+    // Load more message
+    socket.on('load-more-message', function (index) {
+        MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            if(err) { 
+                console.log('erorr connect server mongodb');
+            }
+
+            var collection_message = db.collection('message');
+            collection_message.find().limit(ITEM).skip(index * 10 + currentIndex).toArray(function (err, item) {
+                if (err) {
+                    console.log('error load more message');
+                } else {
+                    socket.emit('get-more-message', item);
+                }
+            })
+
+        });
     })
 
     // Người dùng lần đầu đăng nhập vào hệ thống
@@ -161,6 +172,7 @@ io.sockets.on('connect', function (socket) {
     // Hàm gửi tin nhắn public
     socket.on('send-message-public', function (msg) {
         io.sockets.emit('receive-message-public', msg);
+        ++currentIndex;
 
         // save message to database
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
@@ -175,7 +187,6 @@ io.sockets.on('connect', function (socket) {
             content : msg.message,
             date_send : util.get_time()
           }
-          io.sockets.emit('receive-message-public', msg);
           collection.insert(message, function (err, result) {
             if (err) {
                 console.log('insert message err');

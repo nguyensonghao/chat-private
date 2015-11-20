@@ -233,17 +233,24 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     })
 
     socket.on('get-more-message', function (listMessage) {
-        var size = listMessage.length;
-        for (var i = 0; i < size; i++) {
-            var message = {
-                username : listMessage[i].username.slice(0, 1).toUpperCase(),
-                message : listMessage[i].content
+        if (listMessage == null || listMessage.length == 0)  {
+            $ionicPopup.alert({
+                template: 'Đã load hết tin nhắn'
+            });
+            $scope.$apply();
+        } else {
+            var size = listMessage.length;
+            for (var i = 0; i < size; i++) {
+                var message = {
+                    username : listMessage[i].username.slice(0, 1).toUpperCase(),
+                    message : listMessage[i].content
+                }
+                $scope.listMessage.unshift(message);
             }
-            $scope.listMessage.unshift(message);
+            $('.button-loadmore').removeClass('fadeIn');
+            $scope.showloadMore = false;
+            $scope.$apply();
         }
-        $('.button-loadmore').removeClass('fadeIn');
-        $scope.showloadMore = false;
-        $scope.$apply();
     })
 
     // Nhận tin nhắn private

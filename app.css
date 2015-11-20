@@ -426,19 +426,11 @@ ion-nav-bar .title {
 
 @keyframes fadeIn {
     0% {
-        transform: scale(0);
-    }
-
-    12.5% {
-        transform: scale(0.25);
+        transform: scale(0.75);
     }
 
     25% {
-        transform: scale(0.5);
-    }
-
-    37.5% {
-        transform: scale(0.75);   
+        transform: scale(0.875);
     }
 
     50% {
@@ -460,19 +452,11 @@ ion-nav-bar .title {
 }
 @-webkit-keyframes fadeIn {
     0% {
-        transform: scale(0);
-    }
-
-    12.5% {
-        transform: scale(0.25);
+        transform: scale(0.75);
     }
 
     25% {
-        transform: scale(0.5);
-    }
-
-    37.5% {
-        transform: scale(0.75);   
+        transform: scale(0.875);
     }
 
     50% {
@@ -491,4 +475,8 @@ ion-nav-bar .title {
         transform: scale(1);
         
     }
+}
+
+.popup-body span {
+    margin-left: 20px;
 }

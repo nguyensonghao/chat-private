@@ -6,9 +6,19 @@ port = process.env.PORT || 8989,
 ip = process.env.IP || '127.0.0.1',
 
 // create server 
-server = http.createServer().listen(port, ip, function(){
+/*server = http.createServer().listen(port, ip, function(){
     console.log('Started Socket.IO');
-}),
+}),*/
+
+var server = http.createServer(function(request, response) {
+    response.writeHead(200);
+    response.write("Start server");
+    response.end();
+});
+
+server.listen(port);
+ 
+console.log("Listening on http://127.0.0.1:" + port + "/");
 
 // config socket.io
 io = socketIO.listen(server);

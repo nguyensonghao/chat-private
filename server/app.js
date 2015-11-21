@@ -20,7 +20,7 @@ MongoClient = require('mongodb').MongoClient;
 
 var users = {}; 
 var listUser = []; // list user active
-var ITEM = 10;
+var ITEM = 50;
 
 // Load list user trong cơ sở dữ liệu
 MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {

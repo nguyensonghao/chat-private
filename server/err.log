@@ -24,3 +24,5 @@ TypeError: Cannot call method 'emit' of undefined
     at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/mongo_client.js:455:11
     at process._tickCallback (node.js:415:13)
 Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.

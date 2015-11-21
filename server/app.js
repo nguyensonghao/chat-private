@@ -21,12 +21,11 @@ MongoClient = require('mongodb').MongoClient;
 var users = {}; 
 var listUser = []; // list user active
 var ITEM = 10;
-var currentIndex = 0; 
 
 // Load list user trong cơ sở dữ liệu
 MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
-  var collection = db.collection('user');
-  collection.find().toArray(function (err, item) {
+  var collectionUser = db.collection('user');
+  collectionUser.find().toArray(function (err, item) {
     listUser = item;
   })
 
@@ -35,20 +34,25 @@ MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
 
 io.sockets.on('connect', function (socket) {
     var current_user;
+    var currentIndexMessage = 0; 
+    var currentIndexUser = 0; 
+    var currentIndexMessagePrivate = 0;
+    var resetData = false;
 
     // Thay đổi socket của người dùng khi người dùng đã có tài khoản
     socket.on('reset-socket-user', function (user) {
         current_user = user;
+        resetData = true;
         if (util.check_exits_user(user, listUser)) {
-            users[user.email] = socket;
+            users[user._id] = socket;
 
             // Update trạng thái của người dùng là đang online
             MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
               if(err) { 
                 console.log('erorr connect server mognodb');
               }
-              var collection = db.collection('user');
-              collection.update({email : user.email}, {$set: { "status": 1 }}, function (err, re) {
+              var collectionUser = db.collection('user');
+              collectionUser.update({_id : user._id}, {$set: { "status": 1 }}, function (err, re) {
                 if (err) {
                     console.log('update user online fails');
                 } else {
@@ -56,9 +60,15 @@ io.sockets.on('connect', function (socket) {
                     var size = listUser.length;
                     for (var i = 0; i < size; i++) {
                         var e = listUser[i];
-                        if (e.email == user.email) {
+                        if (e._id == user._id) {
                             listUser[i].status = 1;
-                            io.sockets.emit('get-list-user', listUser);
+                            collectionUser.find({status : 1}).sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                                if (err) {
+                                    console.log('error get list message');
+                                } else {
+                                    io.sockets.emit('get-list-user', util.remove_list_email(item));
+                                }
+                            })
                             break;
                         }
                     }
@@ -70,33 +80,15 @@ io.sockets.on('connect', function (socket) {
     })
 
     // Hàm khởi tại khi người dùng vào hệ thống sẽ gửi toàn bộ tin nhắn và danh sách người dùng đang online về
-
-    MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
-        if(err) { 
-            console.log('erorr connect server mognodb');
-        }
-
-        var collection_message = db.collection('message');
-        collection_message.find().sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
-            if (err) {
-                console.log('error get list message');
-            } else {
-                socket.emit('get-list-message', item);
-            }
-        })
-
-        socket.emit('get-list-user', listUser);
-    });
-
-    socket.on('get-list-data', function () {
-        currentIndex = 0;
+    if (resetData == false) {
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
             if(err) { 
                 console.log('erorr connect server mognodb');
             }
 
-            var collection_message = db.collection('message');
-            collection_message.find().sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+            var collectionMessage = db.collection('message');
+            var collectionUser = db.collection('user');
+            collectionMessage.find().sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
                 } else {
@@ -104,20 +96,53 @@ io.sockets.on('connect', function (socket) {
                 }
             })
 
-            socket.emit('get-list-user', listUser);
+            collectionUser.find({status : 1}).sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                if (err) {
+                    console.log('error get list message');
+                } else {
+                    io.sockets.emit('get-list-user', util.remove_list_email(item));
+                }
+            })
+        });
+    }
+
+    // Hàm được gọi khi quay lại màn hình
+    socket.on('get-list-data', function () {
+        currentIndexMessage = 0;
+        currentIndexUser = 0;
+        MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            if(err) { 
+                console.log('erorr connect server mognodb');
+            }
+
+            var collectionMessage = db.collection('message');
+            var collectionUser = db.collection('user');
+            collectionMessage.find().sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                if (err) {
+                    console.log('error get list message');
+                } else {
+                    socket.emit('get-list-message', item);
+                }
+            })
+
+            collectionUser.find({status : 1}).sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                if (err) {
+                    console.log('error get list message');
+                } else {
+                    io.sockets.emit('get-list-user', util.remove_list_email(item));
+                }
+            })
         });        
     })
 
     // Load more message
     socket.on('load-more-message', function (index) {
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
-            console.log(currentIndex);
             if(err) { 
                 console.log('erorr connect server mongodb');
             }
-            console.log(currentIndex);
-            var collection_message = db.collection('message');  
-            collection_message.find().sort({_id: -1}).limit(ITEM).skip(index * ITEM + currentIndex).toArray(function (err, item) {
+            var collectionMessage = db.collection('message');  
+            collectionMessage.find().sort({_id: -1}).limit(ITEM).skip(index * ITEM + currentIndexMessage).toArray(function (err, item) {
                 if (err) {
                     console.log('error load more message');
                 } else {
@@ -128,11 +153,28 @@ io.sockets.on('connect', function (socket) {
         });
     })
 
+    // Load more user
+    socket.on('load-more-user', function (index) {
+        MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            if(err) { 
+                console.log('erorr connect server mongodb');
+            }
+            var collectionUser = db.collection('user');  
+            collectionUser.find().sort({_id: -1}).limit(1).skip(index * 1 + currentIndexUser).toArray(function (err, item) {
+                if (err) {
+                    console.log('error load more user');
+                } else {
+                    socket.emit('get-more-user', util.remove_list_email(item));
+                }
+            })
+
+        });
+    })
+
+
     // Người dùng lần đầu đăng nhập vào hệ thống
     
     socket.on('user-join-public', function (user) {
-        // if (util.check_exits_user(user, listUser)) {
-        //     socket.emit('error-login', -1);
         if (util.check_exits_email(user, listUser)) {
             socket.emit('error-login', 1);
         } else {
@@ -143,23 +185,24 @@ io.sockets.on('connect', function (socket) {
                 console.log('erorr connect server mognodb');
               }
 
-              var collection = db.collection('user');
-              var user_database = {
+              var collectionUser = db.collection('user');
+              var userInsert = {
                 username : user.username,
                 email : user.email,
                 date_register : util.get_time(),
                 status : 1 // 1 => user online , 0 => user offline
               }
-              collection.insert(user_database, function (err, result) {
+              collectionUser.insert(userInsert, function (err, result) {
                 if (err) {
                     console.log('insert user err');
                 } else {
                     console.log('insert user success');
-                    listUser.push(user_database);
+                    listUser.push(userInsert);
                     current_user = user;
-                    users[user.email] = socket;
-                    socket.emit('login-success', user_database);
-                    io.sockets.emit('add-user-public', user_database);
+                    users[user._id] = socket;
+                    ++currentIndexUser;
+                    socket.emit('login-success', util.remove_email(result.ops[0]));
+                    io.sockets.emit('add-user-public', util.remove_email(result.ops[0]));
                 }
               })
 
@@ -171,7 +214,7 @@ io.sockets.on('connect', function (socket) {
     // Hàm gửi tin nhắn public
     socket.on('send-message-public', function (msg) {
         io.sockets.emit('receive-message-public', msg);
-        ++currentIndex;
+        ++currentIndexMessage;
 
         // save message to database
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
@@ -179,13 +222,13 @@ io.sockets.on('connect', function (socket) {
             console.log('erorr connect server mognodb');
           }
 
-          var collection = db.collection('message');
+          var collectionMessage = db.collection('message');
           var message = {
             username : msg.user.username,
             content : msg.message,
             date_send : util.get_time()
           }
-          collection.insert(message, function (err, result) {
+          collectionMessage.insert(message, function (err, result) {
             if (err) {
                 console.log('insert message err');
             } else {
@@ -199,14 +242,14 @@ io.sockets.on('connect', function (socket) {
 
     // Hàm lấy danh sách tin nhắn đã nhắn trong màn hình public
     socket.on('get-list-message-private-in-public', function (user) {
-        var email = user.email;
+        var id = user._id;
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
             if(err) { 
                 console.log('erorr connect server mognodb');
             }
 
-            var collection = db.collection('message_private');
-            var cursor =db.collection('message_private').find({"my_email" : email});
+            var collectionMessagePrivate = db.collection('message_private');
+            var cursor = collectionMessagePrivate.find({"my_id" : id});
             cursor.each(function(err, doc) {
                 if (doc != null) {
                    socket.emit('receive-list-message-private-in-public', doc);
@@ -219,6 +262,7 @@ io.sockets.on('connect', function (socket) {
 
     // Nhận tin nhắn private
     socket.on('send-message-private', function (msg) {
+        ++ currentIndexMessagePrivate;
         var userReceive = msg.userReceive;
         var userSend = msg.userSend;
         var message = msg.message;
@@ -230,19 +274,19 @@ io.sockets.on('connect', function (socket) {
                 console.log('erorr connect server mognodb');
               }
 
-              var collection = db.collection('message_private');
+              var collectionMessagePrivate = db.collection('message_private');
               // Lưu tin nhắn cho người gửi
               var message_send = {
                 my_username : userSend.username,
-                my_email : userSend.email,
+                my_id : userSend._id,
                 your_username : userReceive.username,
-                your_email : userReceive.email,
+                your_id : userReceive._id,
                 message : msg.message,
                 date : util.get_time(),
                 flag : 0
               }
 
-              collection.insert(message_send, function (err, re) {
+              collectionMessagePrivate.insert(message_send, function (err, re) {
                 if (err) {
                     console.log('insert message private fail');
                 } else {
@@ -256,24 +300,28 @@ io.sockets.on('connect', function (socket) {
               // Lưu tin nhắn cho người nhận
               var message_recieve = {
                 my_username : userReceive.username,
-                my_email : userReceive.email,
+                my_id : userReceive._id,
                 your_username : userSend.username,
-                your_email : userSend.email,
+                your_id : userSend._id,
                 message : msg.message,
                 date : util.get_date_time(),
                 flag : 1,
                 status : 0
               }
-              collection.insert(message_recieve, function (err, re) {
+              collectionMessagePrivate.insert(message_recieve, function (err, re) {
                 if (err) {
                     console.log('insert message private fail');
                 } else {
                     console.log('insert message private success');
                 }
               })
-
-              // Gửi tin nhắn tới người nhận
-              users[userReceive.email].emit('receive-message-pravite', message_recieve);
+              // Gửi tin nhắn tới người nhận => try catch la de khi nguoi dung khong online khonh bi lo
+              try {
+                 users[userReceive._id].emit('receive-message-pravite', message_recieve);
+              }
+              catch(err) {
+                 console.log('user recieve not online');
+              }
 
             });
         } else {
@@ -283,6 +331,7 @@ io.sockets.on('connect', function (socket) {
 
     // Hàm lấy tin nhắn private về cho client
     socket.on('contruct-chat-private', function (data) {
+        currentIndexMessagePrivate = 0;
         var userReceive = data.userReceive;
         var userSend = data.userSend;
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
@@ -290,16 +339,27 @@ io.sockets.on('connect', function (socket) {
                 console.log('erorr connect server mognodb');
             }
 
-            var collection = db.collection('message_private');
-            var cursor =db.collection('message_private').find({"my_username" : userSend.username, "your_username" : userReceive.username});
-            cursor.each(function(err, doc) {
-                if (doc != null) {
-                   socket.emit('receive-list-chat-private', doc);
-                } 
-            });
-            
+            var collectionMessagePrivate = db.collection('message_private');
+            collectionMessagePrivate.find({'my_id' : userSend._id, 'your_id' : userReceive._id}).sort({_id : -1}).limit(5).skip(0).toArray(function (err, item) {
+                socket.emit('receive-list-chat-private', item);  
+            })
         });
-    
+    })
+
+    socket.on('load-more-message-private', function (data) {
+        var userReceive = data.userReceive;
+        var userSend = data.userSend;
+        var index = data.index;
+        MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            if(err) { 
+                console.log('erorr connect server mognodb');
+            }
+
+            var collectionMessagePrivate = db.collection('message_private');
+            collectionMessagePrivate.find({'my_id' : userSend._id, 'your_id' : userReceive._id}).sort({_id : -1}).limit(5).skip(index * 5 + currentIndexMessagePrivate).toArray(function (err, item) {
+                socket.emit('receive-load-more-message-private', item);  
+            })
+        });
     })
 
     // Người dùng vào đọc tin nhắn mới. Phải chuyển trạng thái sang là đã đọc
@@ -309,8 +369,8 @@ io.sockets.on('connect', function (socket) {
         
         // Lấy tin nhắn cuối cùng
         MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
-          var collection = db.collection('message_private');
-          collection.find({'my_email' : userSend.email, 'your_email' : userReceive.email}, function (err, cursor) {
+          var collectionMessagePrivate = db.collection('message_private');
+          collectionMessagePrivate.find({'my_id' : userSend._id, 'your_id' : userReceive._id}, function (err, cursor) {
             cursor.toArray(function(err, item) {
                 var last_message = item.pop();
                 // Kiểm tra xem tin nhắn cuối cùng là do mình gửi hay không
@@ -321,7 +381,7 @@ io.sockets.on('connect', function (socket) {
                     return;
                 } else {
                     // Thay đổi trạng thái của tin nhắn là đã đọc
-                    collection.update({_id : last_message._id}, {$set: { "status": 1 }}, function (err, re) {
+                    collectionMessagePrivate.update({_id : last_message._id}, {$set: { "status": 1 }}, function (err, re) {
                         if (err) {
                             console.log('update message error');
                         } else {
@@ -343,8 +403,8 @@ io.sockets.on('connect', function (socket) {
                 console.log('erorr connect server mognodb');
               }
 
-              var collection = db.collection('user');
-              collection.update({email : current_user.email}, {$set: { "status": 0 }}, function (err, re) {
+              var collectionUser = db.collection('user');
+              collectionUser.update({_id : current_user._id}, {$set: { "status": 0 }}, function (err, re) {
                 if (err) {
                     console.log('update user error');
                 } else {
@@ -352,9 +412,16 @@ io.sockets.on('connect', function (socket) {
                     var size = listUser.length;
                     for (var i = 0; i < size; i++) {
                         var e = listUser[i];
-                        if (e.email == current_user.email) {
+                        if (e._id == current_user._id) {
                             listUser[i].status = 0;
-                            io.sockets.emit('get-list-user', listUser);
+                            collectionUser.find({status : 1}).sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                                if (err) {
+                                    console.log('error get list message');
+                                } else {
+                                    currentIndexUser = 0;
+                                    io.sockets.emit('get-list-user', util.remove_list_email(item));
+                                }
+                            })
                             console.log('User offline');
                             break;
                         }

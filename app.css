@@ -331,10 +331,6 @@ ion-item {
     font-style: italic;
 }
 
-.chat-pravite-screen {
-    height: calc(100vh - 44px) !important;
-}
-
 .chat-pravite-screen .enter-chat-box {
     position: absolute;
     bottom: 0px;

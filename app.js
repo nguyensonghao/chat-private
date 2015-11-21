@@ -31,7 +31,7 @@ angular.module('App', [
     })
 
     .state('chatpravite', {
-        url: '/home/:username/:email',
+        url: '/home/:username/:_id',
         cache: false,
         views: {
             "main-content": {

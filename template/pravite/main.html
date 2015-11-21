@@ -1,13 +1,13 @@
-<ion-view view-title="{{userReceive.username}}">
+<ion-view view-title="{{userReceive.username}}" class="chat-pravite-screen">
   <ion-nav-buttons>
         <span class="icon ion-ios-arrow-left icon-back" ng-click="backScreen()">
         </span>
   </ion-nav-buttons>
-  <ion-content class="has-header" scroll="false">
-    <div class="chat-pravite-screen">
+  <ion-content class="has-header" on-scroll-complete="scroll(scrollTop, scrollLeft)">
+    <div>
 		<div class="content-chat-box">
 			<ion-list>
-			  <ion-item ng-repeat="message in list_message">
+			  <ion-item ng-repeat="message in listMessage">
 			  	<div class="my_message" ng-if="message.flag == 0">
 			  		<div class="message"> 
 						<div class="avatar">
@@ -29,23 +29,15 @@
 			  </ion-item>
 			</ion-list>
 		</div>
-		<!-- <div class="enter-chat-box">
-			<label class="item item-input">
-				<input type="text" placeholder="Nhập tin nhắn" id="enter-chat-pravite-message">
-				<button class="button button-positive button-small"
-					 ng-click="form.sendMessage()">
-					Send
-				</button>
-			</label>
-		</div> -->
-		<ion-footer-bar align-title="left" class="bar-lingth">
+    </div>
+  </ion-content>
+  <ion-footer-bar align-title="left" class="bar-lingth">
 		  	<div class="item item-input">
-				<input type="text" placeholder="Nhập tin nhắn" id="enter-chat-pravite-message">
+				<input type="text" placeholder="Nhập tin nhắn" id="enter-chat-pravite-message"
+				ng-keypress="form.enterMessage($event)">
 				<span class="icon ion-android-send" ng-click="form.sendMessage()">
 					
 				</span>
 			</div>
 		</ion-footer-bar>
-    </div>
-  </ion-content>
 </ion-view>

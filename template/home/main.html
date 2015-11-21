@@ -14,10 +14,6 @@
 	</div>
 
 	<div class="cover" ng-click="showBoxSetting()"></div>
-	<button class="button button-positive button-small button-loadmore"
-				ng-if="showloadMore" ng-click="loadMore()"> 
-					Load more
-				</button>
 	<ul class="menu-tab">
 		<li ng-click="change_tab(1)" ng-class="tab_1">
 			<span class="icon ion-ios-people"></span>
@@ -50,9 +46,9 @@
 				</div>
 			</div>
 			<div class="chat-private" ng-if="tab_active == 2">
-				<div class="list" ng-repeat="messageRecive in listMessageRecive">
+				<div class="list" ng-repeat="messageRecive in listmessageReceive track by $index">
 					<a class="item item-avatar"
-					ng-click="redirectMessagePravite(messageRecive.your_username, messageRecive.your_email)">
+					ng-click="redirectMessagePravite(messageRecive.your_username, messageRecive.your_id)">
 					  <span class="image">
 					  	{{ messageRecive.your_username.slice(0, 1).toUpperCase() }}
 					  </span>
@@ -75,7 +71,8 @@
 	</ion-content>
 
 	<ion-footer-bar align-title="left" class="bar-lingth" ng-if="tab_active == 1">
-	    <input type="text" placeholder="Viết tin nhắn" id="enter-chat-message">
+	    <input type="text" placeholder="Viết tin nhắn" id="enter-chat-message" 
+	    ng-keypress="formChat.enterChat($event)">
 		<i class="icon ion-android-send icon-send" 
 		ng-click="formChat.sendChat()"></i>
 	</ion-footer-bar>

@@ -10,7 +10,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     $scope.formChat = {};
     $scope.listMessage = [];
     $scope.listUser = [];
-    $scope.listMessageRecive = [];
+    $scope.listmessageReceive = []
     $scope.countMessage = 0;
     $scope.newMessage = 0;
     $scope.showloadMore = false;
@@ -18,8 +18,9 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     var showboxSetting = false;
     var socket = io.connect(SERVER_ADRESS);
     var user = localServ.getItem('user');
-    var list_email_pravite = [];
+    var listIdPravite = [];
     var indexMessage = 0; // Số thứ tự để load tin nhắn
+    var indexUser = 0;
 
     if (user != null) {
         socket.emit('reset-socket-user', user);
@@ -31,26 +32,26 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
 
     socket.on('receive-list-message-private-in-public', function (message) {
 
-        var size = $scope.listMessageRecive.length;
+        var size = $scope.listmessageReceive.length;
         if (size == 0) {
-            $scope.listMessageRecive.push(message);
-            list_email_pravite.push(message.your_email);
+            $scope.listmessageReceive.push(message);
+            listIdPravite.push(message.your_id);
         } else {
             for (var i = 0; i < size; i++) {
                 // Kiểm tra xem tin nhắn này đã có người gửi trước chưa
-                if (list_email_pravite.indexOf(message.your_email) == -1) {
-                    list_email_pravite.push(message.your_email);
+                if (listIdPravite.indexOf(message.your_id) == -1) {
+                    listIdPravite.push(message.your_id);
                     $scope.listmessageReceive.push(message);
                     $scope.newMessage ++;
                 } else {
                     // Kiểm tra xem tin nhắn có bị trùng không
-                    var size_of_listMessageRecive = $scope.listMessageRecive.length;
+                    var size = $scope.listmessageReceive.length;
                     var k = 0;
                     for (var j = 0; j < size; j++) {
-                        var e = $scope.listMessageRecive[i];
-                        if (e.your_email == message.your_email) {
+                        var e = $scope.listmessageReceive[i];
+                        if (e.your_id == message.your_id) {
                             // Bị trùng
-                            $scope.listMessageRecive[j] = message;
+                            $scope.listmessageReceive[j] = message;
                             k++;
                         }
                     }
@@ -60,15 +61,15 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
                             // Nếu tin nhắn chưa được đọc thì là tin nhắn mới
                             $scope.newMessage ++;
                         }
-                        $scope.listMessageRecive.push(message);
+                        $scope.listmessageReceive.push(message);
                     }
                 }
             }
         }
 
-        for (var i = 0; i < $scope.listMessageRecive.length; i++) {
+        for (var i = 0; i < $scope.listmessageReceive.length; i++) {
             $scope.newMessage = 0;
-            if ($scope.listMessageRecive[i].status == 0) {
+            if ($scope.listmessageReceive[i].status == 0) {
                 $scope.newMessage ++;
             }
         }
@@ -115,7 +116,17 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
         showboxSetting =  !showboxSetting;
     }
 
+    $scope.formChat.enterChat = function (event) {
+        if (event.keyCode == 13) {
+            sendMessage();
+        }
+    }
+
     $scope.formChat.sendChat = function () {
+        sendMessage();
+    }
+
+    var sendMessage = function () {
         var message = $('#enter-chat-message').val();
         if (message == null || message == '')
             return;
@@ -137,7 +148,6 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
             socket.emit('send-message-public', msg);
             $('#enter-chat-message').val('');
         }
-
     }
 
 
@@ -145,20 +155,20 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     $scope.sendMessagePrivate = function (user) {
         $state.go('chatpravite', {
             username : user.username,
-            email : user.email
+            _id : user._id
         })
     }
 
-    $scope.redirectMessagePravite = function (username, email) {
+    $scope.redirectMessagePravite = function (username, id) {
         // lưu lại trang thái đã đọc cho tin nhắn mới
         var data = {
             userSend : user,
-            userReceive : {username : username, email : email}
+            userReceive : {username : username, _id : id}
         }
         socket.emit('read-message-private', data);
         $state.go('chatpravite', {
             username : username,
-            email : email
+            _id : id
         })
     }
 
@@ -167,13 +177,13 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     }
 
     // Lấy danh sách tin nhắn của hệ thống
-    socket.on('get-list-message', function (list_message) {
-        var size_of_list_message = list_message.length;
+    socket.on('get-list-message', function (listMessage) {
+        var size = listMessage.length;
         $scope.listMessage = [];
-        for (var i = 0; i < size_of_list_message; i++) {
+        for (var i = 0; i < size; i++) {
             var message = {
-                username : list_message[i].username.slice(0, 1).toUpperCase(),
-                message : list_message[i].content
+                username : listMessage[i].username.slice(0, 1).toUpperCase(),
+                message : listMessage[i].content
             }
             $scope.listMessage.unshift(message);
         }
@@ -181,14 +191,13 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     })
 
     // Lấy danh sách người dùng của hệ thống
-    socket.on('get-list-user', function (list_user) {
-        var size_of_list_user = list_user.length;
+    socket.on('get-list-user', function (listUser) {
+        var size = listUser.length;
         $scope.listUser = [];
-        $scope.$apply();
-        for (var i = 0; i < size_of_list_user; i++) {
-            var user_current = list_user[i];
-            if (user == null || list_user[i].email != user.email) {
-                $scope.listUser.push(user_current);    
+        for (var i = 0; i < size; i++) {
+            var e = listUser[i];
+            if (user == null || e._id != user._id) {
+                $scope.listUser.push(e);    
             }
         }
         $scope.$apply();
@@ -196,8 +205,8 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     })
 
     // Người dùng đăng nhập thành công
-    socket.on('login-success', function (user_resquest) {
-        user = user_resquest;
+    socket.on('login-success', function (userLogin) {
+        user = userLogin;
         localServ.setItem('user', user);
         $ionicPopup.alert({
             title: 'Thông báo!',
@@ -206,9 +215,9 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     })
 
     // Thêm người dùng đăng nhập
-    socket.on('add-user-public', function (user_current) {
-        if (user == null || user_current.email != user.email) {
-            $scope.listUser.push(user_current);
+    socket.on('add-user-public', function (userAdd) {
+        if (user == null || userAdd._id != user._id) {
+            $scope.listUser.push(userAdd);
             $scope.$apply();
         }
         
@@ -233,41 +242,46 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     })
 
     socket.on('get-more-message', function (listMessage) {
-        if (listMessage == null || listMessage.length == 0)  {
-            $ionicPopup.alert({
-                template: 'Đã load hết tin nhắn'
-            });
-            $scope.$apply();
-        } else {
-            var size = listMessage.length;
-            for (var i = 0; i < size; i++) {
-                var message = {
-                    username : listMessage[i].username.slice(0, 1).toUpperCase(),
-                    message : listMessage[i].content
-                }
-                $scope.listMessage.unshift(message);
+        if (listMessage == null || listMessage.length == 0)  
+            return;
+        
+        var size = listMessage.length;
+        for (var i = 0; i < size; i++) {
+            var message = {
+                username : listMessage[i].username.slice(0, 1).toUpperCase(),
+                message : listMessage[i].content
             }
-            $('.button-loadmore').removeClass('fadeIn');
-            $scope.showloadMore = false;
-            $scope.$apply();
+            $scope.listMessage.unshift(message);
         }
+        $scope.$apply();
+    })
+
+    socket.on('get-more-user', function (listUser) {
+        if (listUser == null || listUser.length == 0)  
+            return;
+        
+        var size = listUser.length;
+        for (var i = 0; i < size; i++) {
+            $scope.listUser.unshift(listUser[i]);
+        }
+        $scope.$apply();
     })
 
     // Nhận tin nhắn private
     socket.on('receive-message-pravite', function (msg) {
         // Kiểm tra xem tin nhắn mới nhận có là của người đã gửi không
-        var size = $scope.listMessageRecive.length;
+        var size = $scope.listmessageReceive.length;
         var k = 0;
         var last_message;
         for (var i = 0; i < size; i++) {
-            var e = $scope.listMessageRecive[i];
+            var e = $scope.listmessageReceive[i];
             if (e.your_username == msg.your_username) {
-                $scope.listMessageRecive[i] = msg;
+                $scope.listmessageReceive[i] = msg;
                 k++;
             }
         }
         if (k == 0) {
-            $scope.listMessageRecive.push(msg);
+            $scope.listmessageReceive.push(msg);
         }
 
         // Thêm nhận biết là có tin nhắn mới. Kiểm tra xem tin nhắn cũ có là tin nhắn mới không. Nếu có thì không phải tăng nữa vì nó vẫn là tin nhắn mới
@@ -284,19 +298,14 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     // Sự kiện người dùng kéo màn hình lên trên cùng
     $scope.scroll = function (scrollTop, scrollLeft) {
         if (scrollTop >= 0 && scrollTop <= 10) {
-            $scope.showloadMore = true;
-            $scope.$apply();
-            $('.button-loadmore').addClass('fadeIn');
-        } else {
-            $scope.showloadMore = false;
-            $('.button-loadmore').removeClass('fadeIn');
-            $scope.$apply();
+            if ($scope.tab_1 == 'menu-active') {
+                ++indexMessage;
+                socket.emit('load-more-message', indexMessage);
+            } else if ($scope.tab_3 == 'menu-active') {
+                ++indexUser;
+                socket.emit('load-more-user', indexUser);
+            }
         }
-    }
-
-    $scope.loadMore = function () {
-        ++indexMessage;
-        socket.emit('load-more-message', indexMessage);
     }
 
     $scope.loadDone = true;

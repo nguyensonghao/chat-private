@@ -45,6 +45,19 @@ methods.random_color = function () {
     return rand;
 }
 
+methods.remove_list_email = function (listUser) {
+    var size = listUser.length;
+    for (var i = 0; i < size; i++) {
+        delete listUser[i].email;
+    }
+    return listUser;
+}
+
+methods.remove_email = function (user) {
+    delete user.email;
+    return user;
+}
+
 
 // Hàm khởi tạo khi người dùng vào hệ thống
 methods.contruct_systerm = function (socket, MongoClient, listUser, users) {
@@ -89,5 +102,7 @@ module.exports = {
     get_time : methods.get_time,
     get_date_time : methods.get_date_time,
     contruct_systerm : methods.contruct_systerm,
-    random_color : methods.random_color
+    random_color : methods.random_color,
+    remove_email : methods.remove_email,
+    remove_list_email : methods.remove_list_email
 }

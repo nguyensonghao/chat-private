@@ -17,6 +17,7 @@ io.set('origins', '*:*');
 
 // connect to server mongodb
 MongoClient = require('mongodb').MongoClient;
+ObjectID = require('mongodb').ObjectID;
 
 var users = {}; 
 var listUser = []; // list user active
@@ -52,7 +53,7 @@ io.sockets.on('connect', function (socket) {
                 console.log('erorr connect server mognodb');
               }
               var collectionUser = db.collection('user');
-              collectionUser.update({_id : user._id}, {$set: { "status": 1 }}, function (err, re) {
+              collectionUser.update({_id : new ObjectID(user._id)}, {$set: { "status": 1 }}, function (err, re) {
                 if (err) {
                     console.log('update user online fails');
                 } else {
@@ -171,6 +172,42 @@ io.sockets.on('connect', function (socket) {
         });
     })
 
+    socket.on('change-username', function (user) {
+        var username = user.username;
+        MongoClient.connect("mongodb://localhost:27017/local", function(err, db) {
+            if(err) { 
+                console.log('erorr connect server mongodb');
+            }
+            var collectionUser = db.collection('user');
+            var userId = new ObjectID(user._id);
+            collectionUser.update({_id : userId}, {$set: { "username": username }}, function (err, re) {
+                if (err) {
+                    console.log('update user error');
+                } else {
+                    console.log('update user success');
+                    socket.emit('change-username-success', username);
+                    var size = listUser.length;
+                    for (var i = 0; i < size; i++) {
+                        var e = listUser[i];
+                        if (e._id == userId) {
+                            listUser[i].username = username;
+                            collectionUser.find({status : 1}).sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                                if (err) {
+                                    console.log('error get list message');
+                                } else {
+                                    currentIndexUser = 0;
+                                    io.sockets.emit('get-list-user', util.remove_list_email(item));
+                                }
+                            })
+                            console.log('user change username');
+                            break;
+                        }
+                    }
+                }
+            })
+        })
+
+    })
 
     // Người dùng lần đầu đăng nhập vào hệ thống
     
@@ -381,7 +418,7 @@ io.sockets.on('connect', function (socket) {
                     return;
                 } else {
                     // Thay đổi trạng thái của tin nhắn là đã đọc
-                    collectionMessagePrivate.update({_id : last_message._id}, {$set: { "status": 1 }}, function (err, re) {
+                    collectionMessagePrivate.update({_id : new ObjectID(last_message._id)}, {$set: { "status": 1 }}, function (err, re) {
                         if (err) {
                             console.log('update message error');
                         } else {
@@ -404,7 +441,7 @@ io.sockets.on('connect', function (socket) {
               }
 
               var collectionUser = db.collection('user');
-              collectionUser.update({_id : current_user._id}, {$set: { "status": 0 }}, function (err, re) {
+              collectionUser.update({_id : new ObjectID(current_user._id)}, {$set: { "status": 0 }}, function (err, re) {
                 if (err) {
                     console.log('update user error');
                 } else {

@@ -11,9 +11,8 @@
             <input type="text" placeholder="Tên sử dụng" ng-model="showLoginModal.username" required>
           </label>
 
-          <label class="item item-input">
-            <input type="email" placeholder="Email" ng-model="showLoginModal.email" required
-            ng-disabled="showLoginModal.disabledEmail">
+          <label class="item item-input" ng-if="showLoginModal.login">
+            <input type="email" placeholder="Email" ng-model="showLoginModal.email" required>
           </label>
         </div>
     </ion-content>

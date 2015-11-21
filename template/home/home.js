@@ -77,7 +77,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
         $ionicScrollDelegate.scrollBottom(true);
     }); 
 
-    $scope.change_tab = function (index) {
+    $scope.changeTab = function (index) {
         $scope.tab_active = index;
         if (index == 1) {
             $scope.tab_1 = 'menu-active';
@@ -95,12 +95,12 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     }
 
     $scope.changeUsername = function () {
-        dialogServ.showLogin().then(function (data) {
+        dialogServ.showLogin('changeUsername').then(function (data) {
             if (data == null)
                 return;
-
+            var newUser = {username : data.username, _id : user._id}
             // Gửi tin nhắn có 1 user login
-            socket.emit('user-join-public', data);
+            socket.emit('change-username', newUser);
         });
     }
 
@@ -132,7 +132,7 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
             return;
 
         if (user == null || user == '') {
-            dialogServ.showLogin().then(function (data) {
+            dialogServ.showLogin('login').then(function (data) {
                 if (data == null)
                     return;
 
@@ -212,6 +212,16 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
             title: 'Thông báo!',
             template: 'Đăng nhập thành công'
         });
+    })
+
+    socket.on('change-username-success', function (username) {
+        user.username = username;
+        localServ.setItem('user', user);
+        $ionicPopup.alert({
+            title: 'Thông báo!',
+            template: 'Đổi tên tài khoản thành công '
+        });  
+        $scope.$apply();
     })
 
     // Thêm người dùng đăng nhập

@@ -15,18 +15,18 @@
 
 	<div class="cover" ng-click="showBoxSetting()"></div>
 	<ul class="menu-tab">
-		<li ng-click="change_tab(1)" ng-class="tab_1">
+		<li ng-click="changeTab(1)" ng-class="tab_1">
 			<span class="icon ion-ios-people"></span>
 			<p>Chat nhóm</p>
 		</li>
-		<li ng-click="change_tab(2)" ng-class="tab_2">
+		<li ng-click="changeTab(2)" ng-class="tab_2">
 			<span class="icon ion-ios-home"></span>
 			<p>Chat riêng</p>
 			<span class="new-message" ng-if="newMessage > 0">
 				{{ newMessage }}
 			</span>
 		</li>
-		<li ng-click="change_tab(3)" ng-class="tab_3">
+		<li ng-click="changeTab(3)" ng-class="tab_3">
 			<span class="icon ion-ios-paperplane"></span>
 			<p>Danh sách</p>
 		</li>

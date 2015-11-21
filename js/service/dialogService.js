@@ -5,16 +5,16 @@ var dialogServ = angular.module('chat.dialog', []);
 dialogServ.factory('dialogServ', ['$rootScope', '$ionicModal', '$q', 'localServ', function($rootScope, $ionicModal, $q, localServ){
 	var service = {};
 
-	service.showLogin = function () {
+	service.showLogin = function (type) {
 		var deferred = $q.defer();
+        console.log(type);
         var user = localServ.getItem('user');
         $rootScope.showLoginModal = {};
-        if (user == null) {
-            $rootScope.showLoginModal.disabledEmail = false;
-        } else {
-            $rootScope.showLoginModal.disabledEmail = true;
+        if (type == 'changeUsername') {
+            $rootScope.showLoginModal.login = false;
             $rootScope.showLoginModal.username = user.username;
-            $rootScope.showLoginModal.email = user.email;
+        } else {
+            $rootScope.showLoginModal.login = true;
         }
 
         $ionicModal.fromTemplateUrl('template/modal/login.html', {

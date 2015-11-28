@@ -13,7 +13,6 @@ angular.module('chat.home', []).controller('HomeController', ['$scope', '$rootSc
     $scope.listmessageReceive = []
     $scope.countMessage = 0;
     $scope.newMessage = 0;
-    $scope.showloadMore = false;
 
     var showboxSetting = false;
     var socket = io.connect(SERVER_ADRESS);

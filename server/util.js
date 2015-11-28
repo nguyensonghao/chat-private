@@ -35,7 +35,7 @@ methods.get_date_time = function () {
     var currentdate = new Date(); 
     var datetime =  currentdate.getDate() + "/"
                     + (currentdate.getMonth()+1)  + "/" 
-                    + currentdate.getFullYear() + " - " ;
+                    + currentdate.getFullYear();
     return datetime;   
 }
 

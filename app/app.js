@@ -1,5 +1,5 @@
 var initSearchCtrl = false;
-SERVER_ADRESS = 'http://127.0.0.1:9500';
+SERVER_ADRESS = 'http://crazyjapanese.com:8989';
 
 // Declare app level module which depends on views, and components
 angular.module('mazii', [

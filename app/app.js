@@ -153,8 +153,6 @@ angular.module('mazii', [
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    authServTest.init();
-
     $rootScope.getState = function (state) {
         if ($state.current.name == state) {
             return "active";

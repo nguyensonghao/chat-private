@@ -115,7 +115,7 @@ if(err) {
 
         } else {
             var userInsert = {
-                username : user.name,
+                username : user.username,
                 email : user.email,
                 date_register : util.get_time(),
                 fbId : user.id,

@@ -2,8 +2,8 @@
 
 angular.module('mazii')
 
-.controller('ChatController', ["$rootScope", "$scope", "$state", "localstoreServ", "authServTest", "maziiServ", "dictUtilSer",
-    function($rootScope, $scope, $state, localstoreServ, authServTest, maziiServ, dictUtilSer) {
+.controller('ChatController', ["$rootScope", "$scope", "$state", "localstoreServ", "authServ", "maziiServ", "dictUtilSer",
+    function($rootScope, $scope, $state, localstoreServ, authServ, maziiServ, dictUtilSer) {
 
     $scope.tab_1 = 'menu-active';
     $scope.tabActive = 1;
@@ -48,6 +48,7 @@ angular.module('mazii')
             socket.emit('reset-socket-user', user);
             getDataWhenLogined();
             console.log('logined');
+            console.log($rootScope.user);
         }
 
     }
@@ -105,7 +106,7 @@ angular.module('mazii')
     }
 
     $scope.loginFacebook = function () {
-        authServTest.loginFacebook().then(function (data) {
+        authServ.loginFacebook().then(function (data) {
             if (data == null) {
                 return;
             } else {
@@ -116,7 +117,7 @@ angular.module('mazii')
     }
 
     $scope.logoutFacebook = function () {
-        authServTest.logoutFacebook();
+        authServ.logoutFacebook();
         user = $scope.user = null;
         loadData();
         resetDataWhenLogout();

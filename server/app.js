@@ -70,7 +70,6 @@ if(err) {
                     currentUser = result.ops[0];
                     users[result.ops[0]._id] = socket;
                     ++currentIndexUser;
-                    console.log(result.ops[0]));
                     socket.emit('login-success', util.remove_email(result.ops[0]));
                     io.sockets.emit('add-user-public', util.remove_email(result.ops[0]));
                 }

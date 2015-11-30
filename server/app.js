@@ -52,6 +52,7 @@ if(err) {
             console.log('exist email'); // Thực ra email không thể trùng
         } else {
             // insert user to database
+            console.log(user);
             var userInsert = {
                 username : user.name,
                 email : user.email,
@@ -69,6 +70,7 @@ if(err) {
                     currentUser = result.ops[0];
                     users[result.ops[0]._id] = socket;
                     ++currentIndexUser;
+                    console.log(result.ops[0]));
                     socket.emit('login-success', util.remove_email(result.ops[0]));
                     io.sockets.emit('add-user-public', util.remove_email(result.ops[0]));
                 }
@@ -78,6 +80,7 @@ if(err) {
 
     // Thay đổi socket của người dùng khi người dùng đã có tài khoản
     socket.on('reset-socket-user', function (user) {
+        console.log(user);
         if (util.check_exits_email(user, listUser)) {
             collectionUser.find({fbId : user.fbId}).toArray(function (err, item) {
                 if (err) {
@@ -115,7 +118,7 @@ if(err) {
 
         } else {
             var userInsert = {
-                username : user.username,
+                username : user.name,
                 email : user.email,
                 date_register : util.get_time(),
                 fbId : user.id,

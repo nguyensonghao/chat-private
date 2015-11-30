@@ -1,0 +1,27 @@
+<div class="main-news widget-container" id="{{currentNews._id}}">
+    <div class="main-news-title">
+        <p ng-bind-html="currentNews.title"></p>
+    </div>
+    <div class="main-news-time">{{ currentNews.pubDate }}</div>
+
+    <div id="main-news-picture-div" ng-if="currentNews.content.image != '' && currentNews.content.image != null">
+        <img id="main-news-picture" class="movie-news-sm movie-news-md" src="{{ checkLink(currentNews.content.image); }}" ng-if="!showVideo">
+        <div class="movie-play-btn" ng-if="videoAvailable() && !showVideo">
+            <img src="imgs/play.png" ng-click="playVideo()"></img>
+        </div>
+        </img>
+        <div id="news_image_div3" ng-if="showVideo && !isMobile()" ng-bind-html="getVideo()"></div>
+    </div>
+    <div class="main-news-body">
+        <p ng-bind-html="currentNews.content.textbody"></p>
+    </div>
+    <div class="main-news-more">
+        <p ng-bind-html="currentNews.content.textmore"></p>
+    </div>
+    <div class="news-source">ソース：<a href="{{ currentNews.link }}" target="blank">NHK　ニュース</a>
+    </div>
+
+</div>
+<div class="box-search" ng-click="translate()">
+    <img src="imgs/search.png" height="30px">
+</div>

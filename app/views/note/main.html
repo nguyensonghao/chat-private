@@ -1,0 +1,28 @@
+<div class='note-block'>
+    <div class="widget-container">
+        <div class="news-title">
+            <button class='btn btn-default note-add' data-toggle="modal" data-target="#myCategory">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <div class=" note-edit">
+                <button class='btn btn-default' ng-click="showEdit()">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </div>
+        </div>
+        <hr class="note-hr-heading">
+        <div class="note-item" ng-if="category.length != 0"  ng-repeat="item in category" ng-click="getNoteItem(item.category)" ng-class="{ 'unseen': activeItem !== item }">
+            <div class="note-content">{{ item.category }}</div>
+            <button class="category-delete btn btn-default btn-sm" ng-class="getDeleteState()" ng-click="deleteCategory(item.category)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <div class="note-time">{{ getTime(item.date) }}</div>
+        </div>
+        <div class="note-item-not" ng-if="category.length == 0">
+            Bạn chưa tạo nhóm.
+        </div>
+    </div>
+    
+</div>
+
+<ng-category></ng-category>

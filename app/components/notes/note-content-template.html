@@ -1,0 +1,27 @@
+<div id="myNote" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thêm từ vào</h4>
+            </div>
+            <div class="modal-body">
+                <div class="content" ng-if="category.length != 0">
+				    <div class="history-item"  ng-repeat="item in category.slice().reverse() track by $index">
+				        <div class="his-content" ng-click="saveNoteMe(item.category)">{{ item.category }}</div>
+				        <div class="his-time">{{ getTime(item.date) }}</div>
+				    </div>
+				</div>
+                <div ng-if="category.length == 0">
+                    Bạn chưa tạo nhóm từ nào
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myCategory">Tạo mới</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="verb-conjugation-container">
+    <div class="verb-title">Bảng chia động từ: </div>
+    <table class="verb-conjugation">
+        <thead>
+          <tr>
+            <th class="form-column">Tên thể (形)</th>
+            <th class="word-column">Từ</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="(key, value) in data">
+            <td class="form-column"> {{value.name}} </td>
+            <td class="word-column"> {{value.word}} </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

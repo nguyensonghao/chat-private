@@ -1,0 +1,339 @@
+<div class="main-chat widget-container col-md-12" ng-if="loadDone">
+	<div class="col-md-4">
+		<ul class="menu-tab">
+			<li ng-click="changeTab(1)" ng-class="tab_1">
+				<p>Chat nhóm</p>
+			</li>
+			<li ng-click="changeTab(2)" ng-class="tab_2">
+				<p>Chat riêng 
+					<span class="new-message" ng-if="newMessage">N</span>
+				</p>
+			</li>
+			<li ng-click="changeTab(3)" ng-class="tab_3">
+				<p>Danh sách</p>
+			</li>
+		</ul>
+
+		<div class="content">
+			<div class="box-chat">
+				<div class="chat-public" ng-if="tabActive == 1">
+					<div class="list-message">
+						<ul class="list-group">
+							<li class="list-group-item group-0 group-jlpt-active" 
+							ng-click="changeScreen(0)">
+								Nhóm chung
+							</li>
+							<li class="list-group-item group-5" ng-click="changeScreen(5)">
+								JLPT N5
+							</li>
+							<li class="list-group-item group-4" ng-click="changeScreen(4)">
+								JLPT N4
+							</li>
+							<li class="list-group-item group-3" ng-click="changeScreen(3)">
+								JLPT N3
+							</li>
+							<li class="list-group-item group-2" ng-click="changeScreen(2)">
+								JLPT N2
+							</li>
+							<li class="list-group-item group-1" ng-click="changeScreen(1)">
+								JLPT N1
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="chat-list-private" ng-if="tabActive == 2">
+					<ul class="list-message-receive">
+						<li class="list-group-item message-receive 
+						message-private-{{message.status}}" 
+						ng-repeat="message in listmessageReceive track by $index | orderBy:'status'"
+						ng-click="redirectChatPrivatetoListMessage(message)">
+							<div class="avatar">
+								{{ message.your_username.slice(0, 1).toUpperCase() }}
+							</div>
+
+							<div class="detail">
+								<p class="username">{{ message.your_username }}</p>
+								<p class="content">{{ message.message }}</p>
+								<div class="date">
+									{{ message.date }}
+								</div>
+							</div>
+
+						</li>
+					</ul>
+				</div>
+				<div class="chat-list-user" ng-if="tabActive == 3">
+					<ul class="list-group list-user">
+						<li class="list-group-item" ng-repeat="user in listUser"
+						ng-click="redirectChatPrivate(user)">
+							{{ user.username }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-8 screen-chat">
+		<div class="bar">	
+			{{ titleBar }}
+			<div class="btn-group username" ng-if="user != null">
+			  	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    	<span>{{ user.username }}</span> 
+					<span class="glyphicon glyphicon-cog"></span>
+			  	</button>
+			  	<ul class="dropdown-menu">
+			    	<li>
+			    		<a ng-click="logoutFacebook()">Đăng xuất</a>
+			    	</li>
+			  	</ul>
+			</div>
+		</div>
+
+		<div class="login-form col-md-8 col-md-offset-2" ng-if="showLogin">
+			<p>Bạn phải đăng nhập</p>
+			<div class="login-facebook">
+				<img src="imgs/facebook.png" height="50px" ng-click="loginFacebook()">
+			</div>
+		</div>
+		
+		<div class="chat-public" ng-if="!showLogin && tabScreen == 0">
+			<div class="list-message" id="list-message-0">
+				<div class="message-public" ng-if="message.index == 0" 
+				ng-repeat="message in listMessage"> 
+					<div class="avatar" ng-click="showDetailUser(message._id)">
+						{{ message.username.slice(0, 1).toUpperCase() }}
+						<div class="detail-user detail-user-{{message._id}}">
+							<p ng-click="redirectChatPrivatetoDetailUser(message)">
+								{{ message.username }}
+							</p>
+							<p><i class="fa fa-clock-o"></i> {{ message.date_send }}</p>
+						</div>
+					</div> 
+					<div class="text text-{{message._id}}">
+						{{ message.message }} 
+						<button class="translate" 
+						ng-click="translateMessage(message.message, message._id)">
+							dịch
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" rows="3" 
+			      id ="enter-chat-message-0" ng-keypress="formChat.enterChat($event, 0)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChat(0)">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+
+		<div class="chat-public" ng-if="!showLogin && tabScreen == 1">
+			<div class="list-message" id="list-message-1">
+				<div class="message-public" ng-if="message.index == 1" 
+				ng-repeat="message in listMessage"> 
+					<div class="avatar" ng-click="showDetailUser(message._id)">
+						{{ message.username.slice(0, 1).toUpperCase() }}
+						<div class="detail-user detail-user-{{message._id}}">
+							<p class="username">{{ message.username }}</p>
+							<p><i class="fa fa-clock-o"></i> {{ message.date_send }}</p>
+						</div>
+					</div> 
+					<div class="text text-{{message._id}}">
+						{{ message.message }} 
+						<button class="translate" 
+						ng-click="translateMessage(message.message, message._id)">
+							dịch
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" 
+			      id ="enter-chat-message-1" ng-keypress="formChat.enterChat($event, 1)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChat(1)">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+		<div class="chat-public" ng-if="!showLogin && tabScreen == 2">
+			<div class="list-message" id="list-message-2">
+				<div class="message-public" ng-if="message.index == 2" 
+				ng-repeat="message in listMessage"> 
+					<div class="avatar" ng-click="showDetailUser(message._id)">
+						{{ message.username.slice(0, 1).toUpperCase() }}
+						<div class="detail-user detail-user-{{message._id}}">
+							<p class="username">{{ message.username }}</p>
+							<p><i class="fa fa-clock-o"></i> {{ message.date_send }}</p>
+						</div>
+					</div> 
+					<div class="text text-{{message._id}}">
+						{{ message.message }} 
+						<button class="translate" 
+						ng-click="translateMessage(message.message, message._id)">
+							dịch
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" 
+			      id ="enter-chat-message-2" ng-keypress="formChat.enterChat($event, 2)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChat(2)">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+		<div class="chat-public" ng-if="!showLogin && tabScreen == 3">
+			<div class="list-message" id="list-message-3">
+				<div class="message-public" ng-if="message.index == 3" 
+				ng-repeat="message in listMessage"> 
+					<div class="avatar" ng-click="showDetailUser(message._id)">
+						{{ message.username.slice(0, 1).toUpperCase() }}
+						<div class="detail-user detail-user-{{message._id}}">
+							<p class="username">{{ message.username }}</p>
+							<p><i class="fa fa-clock-o"></i> {{ message.date_send }}</p>
+						</div>
+					</div> 
+					<div class="text text-{{message._id}}">
+						{{ message.message }} 
+						<button class="translate" 
+						ng-click="translateMessage(message.message, message._id)">
+							dịch
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" 
+			      id ="enter-chat-message-3" ng-keypress="formChat.enterChat($event, 3)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChat(3)">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+		<div class="chat-public" ng-if="!showLogin && tabScreen == 4">
+			<div class="list-message" id="list-message-4">
+				<div class="message-public" ng-if="message.index == 4" 
+				ng-repeat="message in listMessage"> 
+					<div class="avatar" ng-click="showDetailUser(message._id)">
+						{{ message.username.slice(0, 1).toUpperCase() }}
+						<div class="detail-user detail-user-{{message._id}}">
+							<p class="username">{{ message.username }}</p>
+							<p><i class="fa fa-clock-o"></i> {{ message.date_send }}</p>
+						</div>
+					</div> 
+					<div class="text text-{{message._id}}">
+						{{ message.message }} 
+						<button class="translate" 
+						ng-click="translateMessage(message.message, message._id)">
+							dịch
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" 
+			      id ="enter-chat-message-4" ng-keypress="formChat.enterChat($event, 4)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChat(4)">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+		<div class="chat-public" ng-if="!showLogin && tabScreen == 5">
+			<div class="list-message" id="list-message-5">
+				<div class="message-public" ng-if="message.index == 5" 
+				ng-repeat="message in listMessage"> 
+					<div class="avatar" ng-click="showDetailUser(message._id)">
+						{{ message.username.slice(0, 1).toUpperCase() }}
+						<div class="detail-user detail-user-{{message._id}}">
+							<p class="username">{{ message.username }}</p>
+							<p><i class="fa fa-clock-o"></i> {{ message.date_send }}</p>
+						</div>
+					</div> 
+					<div class="text text-{{message._id}}">
+						{{ message.message }} 
+						<button class="translate" 
+						ng-click="translateMessage(message.message, message._id)">
+							dịch
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" 
+			      id ="enter-chat-message-5" ng-keypress="formChat.enterChat($event, 5)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChat(5)">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+		<div class="chat-private" ng-if="!showLogin && tabScreen == 6">
+			<div class="list-message list-message-private"  id="list-message-6">
+				<div ng-repeat="message in listMessagePrivate">
+					<div class="my_message message-private" ng-if="message.flag == 0">
+						<div class="avatar" ng-click="showDetailUser(message._id)">
+							{{ message.my_username.slice(0, 1).toUpperCase() }}
+							<div class="detail-user detail-user-{{message._id}}">
+								<p class="username">{{ message.my_username }}</p>
+								<p><i class="fa fa-clock-o"></i> {{ message.date }}</p>
+							</div>
+						</div> 
+						<div class="text text-{{message._id}}">
+							{{ message.message }} 
+							<button class="translate" 
+							ng-click="translateMessage(message.message, message._id)">
+								dịch
+							</button>
+						</div>
+					</div>
+					<div class="your_message message-private" ng-if="message.flag == 1">
+						<div class="avatar" ng-click="showDetailUser(message._id)">
+							{{ message.your_username.slice(0, 1).toUpperCase() }}
+							<div class="detail-user detail-user-{{message._id}}">
+								<p class="username">{{ message.your_username }}</p>
+								<p><i class="fa fa-clock-o"></i> {{ message.date }}</p>
+							</div>
+						</div> 
+						<div class="text text-{{message._id}}">
+							{{ message.message }} 
+							<button class="translate" 
+							ng-click="translateMessage(message.message, message._id)">
+								dịch
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="enter-message">
+				<div class="input-group">
+			      <textarea class="form-control" placeholder="Nhập tin nhắn" 
+			      id ="enter-chat-message-6" ng-keypress="formChat.enterChatPrivate($event)"></textarea>
+			      <div class="input-group-addon" ng-click="formChat.sendChatPrivate()">
+			      	<span class="glyphicon glyphicon-send"></span>
+			      </div>
+			    </div>
+			</div>
+		</div>
+
+		<div class="chat-list-user" ng-if="!showLogin && tabScreen == 7">
+			<div class="information-list-user">
+				<p>Hiện tại đang có {{listUser.length + 1}} người đang online</p>
+				<p>Hãy chọn 1 người bạn để trò chuyện nào</p>
+			</div>
+		</div>
+	</div>
+</div>

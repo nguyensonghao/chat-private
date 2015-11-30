@@ -1,0 +1,12 @@
+<div class="input-group input-group-lg input-group-write">
+    <input type="text" placeholder="Nhập vào chữ kanji, ví dụ 日" maxlength="10" id="draw-text-box" class="form-control" ng-model="form.kanji" ng-enter="searchKanji()">
+    <div class="input-group-btn" ng-click="searchKanji()">
+        <button type="button" class="btn btn-primary" id="search-button" tabindex="-1">
+            <span class="fa fa-play fa-lg"></span>
+        </button>
+    </div>
+</div>
+
+<div class="result-draw-kanji-write" ng-if="showDrawKanji">
+	<ng-kanji-draw data="data.kanji"></ng-kanji-draw>
+</div>

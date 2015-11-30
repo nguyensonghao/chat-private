@@ -1,0 +1,61 @@
+<div class="btn-group jlpt-option">
+    <div class="btn-group" id="jlpt-type" value="{{ type }}">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            <span ng-if="type == 'kanji'"> Hán tự</span>
+            <span ng-if="type == 'grammar'"> Ngữ pháp</span>
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="jlpt-type">
+            <li><a tabindex="-1" value="kanji" ng-click="selectType('kanji')" data-target="#">Hán tự</a>
+            </li>
+            <li><a tabindex="-1" value="grammar" ng-click="selectType('grammar')" data-target="#">Ngữ pháp</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="btn-group" id="jlpt-level" value="{{ level }}">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+            <span>N{{ level }}</span>
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="jlpt-level">
+            <li><a tabindex="-1" value="5" ng-click="selectLevel(5)" data-target="#">N5</a>
+            </li>
+            <li><a tabindex="-1" value="4" ng-click="selectLevel(4)" data-target="#">N4</a>
+            </li>
+            <li><a tabindex="-1" value="3" ng-click="selectLevel(3)" data-target="#">N3</a>
+            </li>
+            <li><a tabindex="-1" value="2" ng-click="selectLevel(2)" data-target="#">N2</a>
+            </li>
+            <li><a tabindex="-1" value="1" ng-click="selectLevel(1)" data-target="#">N1</a>
+            </li>
+        </ul>
+    </div>
+    <button type="button" class="btn btn-primary btn-query" ng-click="query()">Xem</button>
+</div>
+<div class="page-selector" ng-if="list != null">
+    <button type="button" class="btn pager-btn pager-left" ng-class="getPreState();" ng-click="prePage()"><i class="fa fa-caret-left fa-2x"></i></button>
+    <button type="button" class="btn pager-btn pager-right" ng-class="getNextState();" ng-click="nextPage();"><i class="fa fa-caret-right fa-2x"></i></button>
+</div>
+
+<div id="jlpt-detail">
+    <div id="grammar-result-search" class="widget-container table-grammar-list" ng-if="type == 'grammar'  && list != null">
+        <div class="grammar-jlpt" ng-repeat="item in list track by $index">
+            <a class="grammar-link" ng-click="showGrammar(item.id)"><span class="index">{{ $index + 1 + length }}.</span> {{ getBeautyTitleGrammar(item.value.title) }}</a>
+            <span class="grammar-mean" ng-bind-html="getBeautyDescGrammar(item)"></span>
+        </div>
+    </div>
+    <div id="kanji-detail-result" class="widget-container table-kanji-list" ng-if="type == 'kanji' && list != null">
+        <div class="kanji-jlpt-char" ng-repeat="item in list track by $index">
+            <a class="kanji-link" ng-click="showKanji(item.value.kanji)">
+                <div class="jlpt-kanji-kanji">{{ item.value.kanji }}</div>
+                <div class="jlpt-kanji-mean" ng-if="showhanViet">{{ item.value.mean.split(',')[0] }}</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="page-selector" ng-if="list != null">
+    <button type="button" class="btn pager-btn pager-left" ng-class="getPreState();" ng-click="prePage()"><i class="fa fa-caret-left fa-2x"></i></button>
+    <button type="button" class="btn pager-btn pager-right" ng-class="getNextState();" ng-click="nextPage();"><i class="fa fa-caret-right fa-2x"></i></button>
+</div>

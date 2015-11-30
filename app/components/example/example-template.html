@@ -1,0 +1,32 @@
+<div class="example-container" ng-if="mergeExample != null">
+    <div class="example-index" ng-if="index != null">{{ index }}.</div>
+    <div class="example-word sentence-exam">
+        <span ng-if="isJapanese">
+            <ruby ng-repeat="me in mergeExample">
+                {{ me.k }} <rt>{{ me.h }}</rt>
+            </ruby>
+        </span>
+        <span ng-if="!isJapanese" ng-bind-html="data.content">
+        </span>
+    </div>
+    <div class="example-mean-word sentence-exam">
+        <span ng-if="!isJapanese">
+            <ruby ng-repeat="me in mergeExample">
+                {{ me.k }} <rt>{{ me.h }}</rt>
+            </ruby>
+        </span>
+        <span ng-if="isJapanese" ng-bind-html="data.mean">
+        </span>
+    </div>
+</div>
+<div class="example-container" ng-if="mergeExample == null">
+    <div class="example-index" ng-if="index != null">{{ index }}.</div>
+    <div class="example-word sentence-exam">
+        <span ng-if="isJapanese" ng-bind-html="data.content"></span>
+        <span ng-if="!isJapanese" ng-bind-html="data.mean"></span>
+    </div>
+    <div class="example-mean-word sentence-exam">
+        <span ng-if="!isJapanese" ng-bind-html="data.content"></span>
+        <span ng-if="isJapanese" ng-bind-html="data.mean"></span>
+    </div>
+</div>

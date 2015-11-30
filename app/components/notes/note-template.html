@@ -1,0 +1,38 @@
+<div class="note-content-block">
+	<div class="widget-container" ng-if="note.length != 0">
+		<div class="news-title">
+		    <div class="note-edit-content">
+                <button class='btn btn-default' ng-click="showEditNote()">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+            </div>
+		</div>
+		<hr class="note-hr-heading">
+		<div class="note-item" ng-if="note" ng-repeat="item in note.slice().reverse() track by $index">
+			<div ng-if="item.type != 'grammar_detail'">
+				<div ng-click="search(item.type, item.query);">
+			    	<div class="history-type" value="{{ item.type[0] }}"> {{ item.type[0] }} </div>
+			    	<div class="note-content">{{ item.query }}</div>
+			    	<div class="note-time">{{ getTime(item.date) }}</div>
+				</div>
+			    <button class="btn btn-default btn-sm note-delete" ng-class="getDeleteState()" ng-click="deleteNote(item.id)">
+			    	<span class="glyphicon glyphicon-remove"></span>
+			    </button>
+			</div>
+			<div ng-if="item.type == 'grammar_detail'">
+				<div ng-click="search(item.type, item.query);">
+			    	<div class="history-type" value="{{ item.type[0] }}"> {{ item.type[0] }} </div>
+			    	<div class="note-content">{{ item.query }}</div>
+			    	<div class="note-time">{{ getTime(item.date) }}</div>
+				</div>
+			    <button class="btn btn-default btn-sm note-delete" ng-class="getDeleteState()" ng-click="deleteGrammar(item.id)">
+			    	<span class="glyphicon glyphicon-remove"></span>
+			    </button>
+			</div>
+		</div>
+	</div>
+	<div ng-if="note.length == 0">
+		Không có từ trong nhóm.
+	</div>
+</div>
+

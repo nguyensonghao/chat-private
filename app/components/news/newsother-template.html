@@ -1,0 +1,10 @@
+<div class="older-news widget-container">
+    <div class="news-title">他のニュース</div>
+    <hr class="other-news-hr-heading">
+	<div class="news-link">
+	    <a id="{{newsLink.value.id}}" class="links-news-title" ng-click="changeDetailNews(newsLink.id);" ng-repeat="newsLink in lastestNews track by $index" ng-class="getNewsReadClass(newsLink.value.id);" >
+	        <p ng-bind-html="newsLink.value.title"></p>
+	    </a>
+	</div>
+    </div>
+</div>

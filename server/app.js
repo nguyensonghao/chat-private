@@ -81,7 +81,7 @@ if(err) {
     socket.on('reset-socket-user', function (user) {
         console.log(user);
         if (util.check_exits_email(user, listUser)) {
-            collectionUser.find({fbId : user.fbId}).toArray(function (err, item) {
+            collectionUser.find({fbId : user.id}).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
                 } else {

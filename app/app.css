@@ -3700,3 +3700,9 @@ nav.navbar.navbar-fixed-top li{
 .navbar-fixed-top li a {
     padding: 10px 20px;
 }
+
+.alert.alert-danger.alert-write.ng-scope {
+    color: #a94442;
+    text-align: center;
+    margin-top: 28px;
+}

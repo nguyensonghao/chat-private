@@ -9,7 +9,6 @@ angular.module('mazii')
 	$scope.showDrawKanji = false;
 	$rootScope.title = 'Tập viết';
 
-
 	var getDataKanji = function () {
 		var query = $scope.form.kanji;
 		maziiServ.search("kanji", query).then(function (data) {
@@ -24,10 +23,10 @@ angular.module('mazii')
                     $scope.data = $scope.kanjis[0];
                 }
                 $scope.showDrawKanji = true;
-                
+                $scope.showResultNull = false;
                 
  			} else {
- 				console.log('error');
+ 				$scope.showResultNull = true;
  			}
 
         });

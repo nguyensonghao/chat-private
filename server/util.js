@@ -22,7 +22,7 @@ methods.check_exits_email = function (user, listUser) {
 
 methods.check_exits_fbId = function (user, listUser) {
     for (var i = 0; i < listUser.length; i++) {
-        if (user.fbId == listUser[i].fbId) {
+        if (user.id == listUser[i].fbId) {
             return true;
         }
     }

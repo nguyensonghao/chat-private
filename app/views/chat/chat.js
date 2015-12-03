@@ -238,6 +238,7 @@ angular.module('mazii')
         if (event.keyCode == 13) {
             if (!event.shiftKey) {
                 sendMessage(index);   
+                event.preventDefault();
             }
         }
     }
@@ -259,7 +260,6 @@ angular.module('mazii')
 
             // Gửi tin nhắn tới server 
             socket.emit('send-message-public', msg);
-            $('#enter-chat-message-' + index).val().replace(/\n/g, "");
             $('#enter-chat-message-' + index).val('');
 	    console.log($('#enter-chat-message-'+ index).val());
         }
@@ -373,6 +373,7 @@ angular.module('mazii')
         if (event.keyCode == 13) {
             if (!event.shiftKey) {
                 sendMessagePrivate();    
+                event.preventDefault();
             }
         }
     }

@@ -2437,7 +2437,7 @@ opacity: 0.3;
 }
 
 .app-link {
-    width: 150px;
+    /*width: 150px;*/
 }
 
 .app-link img {
@@ -3669,13 +3669,7 @@ nav.navbar.navbar-fixed-top li{
 }
 
 .marketing .col-md-6 ul li{
-    float: left;
     list-style: none;
-    margin-left: 60px;
-    border: 1px solid #9197a3;
-    padding: 6px;
-    border-radius: 2px;
-    cursor: pointer;
 }
 
 #chat-module.hide-chat {

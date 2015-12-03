@@ -626,27 +626,33 @@
     padding-left: 100px;
 }
 
-.marketing ul.list-button li {
-    list-style: none;
-    float: left;
-    margin: 10px;
-    border: 1px solid #333;
-    padding: 10px 15px;
-    border-radius: 2px;
+.marketing .app-link {
+    height: 44px;
+    width: 147px;
+    margin-right: 20px;   
 }
 
-.marketing ul.list-button li a {
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
+.marketing img.app-link.big{
+    height: 32px;
+    width: 32px;
 }
 
-.marketing ul.list-button li a:hover {
-    text-decoration: underline;
+.menu-left img.logo-mazii {
+    height: 40px;
+    margin-top: -5px;
+    margin-left: -15px;
 }
 
-.marketing img.app-link.big {
-    height: 50px;
-    width: 50px;
-    margin-left: 20px;
+.scale {
+    text-align: left !important;
+}
+
+.list-menu-footer {
+    padding: 0;
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+.list-menu-footer li a {
+    color: #333333;
 }

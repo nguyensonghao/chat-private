@@ -235,9 +235,9 @@ angular.module('mazii')
     }
 
     $scope.formChat.enterChat = function (event, index) {
-        if (event.keyCode == 13) {
-            sendMessage(index);
-        }
+        // if (event.keyCode == 13) {
+        //     sendMessage(index);
+        // }
     }
 
     var sendMessage = function (index) {

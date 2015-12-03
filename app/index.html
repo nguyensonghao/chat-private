@@ -29,9 +29,9 @@
       </span>
       <div class="mobile-app-marketing not-mobile">
           <a href="https://itunes.apple.com/app/apple-store/id933081417" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'android-mobile-top')"><img class="app-link" src="imgs/app_store.png"></a>
-          <a href="https://play.google.com/store/apps/details?id=com.mazii.dictionary" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-top')"><img class="app-link" src="imgs/google_play.png"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.mazii.dictionary" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-top')"><img class="app-link" src="imgs/google_play_white.png"></a>
           <a href="https://www.microsoft.com/store/apps/9NBLGGH3TCHJ" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-top')"><img class="app-link" src="imgs/English_wstore_black_258x67.png"></a>
-          <a href="#" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-top')"><img class="app-link" src="imgs/chrome.png"></a>
+          <a href="https://chrome.google.com/webstore/detail/translate-japanese-mazii/lkjffochdceoneajnigkbdddjdekhojj" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-top')"><img class="app-link" src="imgs/chromewebstore.png"></a>
       </div>
       
       <section class="app-bar-actions">
@@ -89,18 +89,6 @@
                   Đọc báo
                 </a>
               </li>
-              <!-- <li ng-class="getState('help')">
-                <a href="#/help">
-                  <i class="fa fa-life-ring fa-fw fa-lg"></i>
-                  Trợ giúp
-                </a>
-              </li>
-              <li ng-class="getState('about')">
-                <a href="#/about">
-                  <i class="fa fa-smile-o fa-fw fa-lg"></i> 
-                  Về Mazii
-                </a>
-              </li> -->
               <li ng-class="getState('chat')">
                 <a href="#/chat">
                   <i class="fa fa-commenting-o fa-fw fa-lg"></i> 
@@ -113,6 +101,18 @@
                   Tập viết
                 </a>
               </li>
+              <!-- <li ng-class="getState('help')">
+                <a href="#/help">
+                  <i class="fa fa-life-ring fa-fw fa-lg"></i>
+                  Trợ giúp
+                </a>
+              </li>
+              <li ng-class="getState('about')">
+                <a href="#/about">
+                  <i class="fa fa-smile-o fa-fw fa-lg"></i> 
+                  Về Mazii
+                </a>
+              </li> -->
             </ul>
           </div><!--/.nav-collapse -->
       </div>
@@ -199,10 +199,10 @@
 
   <div class="marketing">
     <div class="container">
-      <div class="col-md-6 col-lg-6 list-marketing">
-        <a href="https://itunes.apple.com/app/apple-store/id933081417" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-bottom')"><img class="app-link big" src="imgs/app_store2.png"></a>
+      <div class="col-md-6 col-lg-6">
+        <a href="https://itunes.apple.com/app/apple-store/id933081417" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-bottom')"><img class="app-link big" src="imgs/app_store_footer.png"></a>
         <a href="https://play.google.com/store/apps/details?id=com.mazii.dictionary" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'android-mobile-bottom')"><img class="app-link big" src="imgs/google_play.png"></a>
-        <a href="https://www.microsoft.com/store/apps/9NBLGGH3TCHJ" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-bottom')"><img class="app-link big" src="imgs/English_wstore_black2_258x67.png"></a>
+        <a href="https://www.microsoft.com/store/apps/9NBLGGH3TCHJ" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-bottom')"><img class="app-link big" src="imgs/English_wstore_black_258x67_footer.png"></a>
         <h3>Mazii mobile</h3>
         <p>Phiên bản offline dành cho điện thoại.</p>
         <a href="https://chrome.google.com/webstore/detail/translate-japanese-mazii/lkjffochdceoneajnigkbdddjdekhojj" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'chrome-extension-bottom')"><img class="app-link" src="imgs/ChromeWebStore_Badge_v2_496x150.png"></a>
@@ -210,14 +210,18 @@
         <p>Tra cứu tiếng Nhật trên mọi website khác, chỉ cần click đúp chuột.</p>
       </div>
       <div class="col-md-6 col-lg-6">
-        <ul>
+        <ul class="list-button">
           <li>
-            <i class="fa fa-smile-o fa-fw fa-lg"></i> 
-            Về Mazii
+            <a href="#about">
+              <i class="fa fa-smile-o fa-fw fa-lg"></i> 
+              Về Mazii
+            </a>
           </li>
           <li>
-            <i class="fa fa-life-ring fa-fw fa-lg"></i>
-            Trợ giúp
+            <a href="#help">
+              <i class="fa fa-life-ring fa-fw fa-lg"></i>
+              Trợ giúp
+            </a>
           </li>
         </ul>
         <div class="fb-page" data-href="https://www.facebook.com/maziinet/?fref=ts" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/maziinet/?fref=ts"><a href="https://www.facebook.com/maziinet/?fref=ts">Mazii.net</a></blockquote></div></div>

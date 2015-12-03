@@ -621,3 +621,32 @@
     overflow-x: hidden !important;
     padding-bottom: 20px;
 }
+
+.marketing ul.list-button {
+    padding-left: 100px;
+}
+
+.marketing ul.list-button li {
+    list-style: none;
+    float: left;
+    margin: 10px;
+    border: 1px solid #333;
+    padding: 10px 15px;
+    border-radius: 2px;
+}
+
+.marketing ul.list-button li a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.marketing ul.list-button li a:hover {
+    text-decoration: underline;
+}
+
+.marketing img.app-link.big {
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+}

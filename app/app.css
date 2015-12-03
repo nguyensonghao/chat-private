@@ -3686,3 +3686,23 @@ nav.navbar.navbar-fixed-top li{
     font-size: 22px;
     line-height: 40px;
 }
+
+.mobile-app-marketing a img {
+    height: 32px !important;
+    width: 32px !important;
+    margin-left: 20px !important;
+}
+
+.list-suggest-history.ng-scope {
+    min-height: 0px;
+    position: static;
+}
+
+.search-input-container .search-box-range .input-group-btn .btn{
+    width: 58px;
+    border-radius: 0;
+}
+
+.navbar-fixed-top li a {
+    padding: 10px 20px;
+}

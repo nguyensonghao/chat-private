@@ -3689,7 +3689,7 @@ nav.navbar.navbar-fixed-top li{
 
 .list-suggest-history.ng-scope {
     min-height: 0px;
-    position: static;
+    position: absolute;
 }
 
 .search-input-container .search-box-range .input-group-btn .btn{

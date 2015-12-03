@@ -627,8 +627,8 @@
 }
 
 .marketing .app-link {
-    height: 44px;
-    width: 147px;
+    height: 38px;
+    width: 38px;
     margin-right: 20px;   
 }
 
@@ -655,4 +655,18 @@
 
 .list-menu-footer li a {
     color: #333333;
+}
+
+.scale h3 {
+    margin-top: 14px;
+}
+
+
+.app-bar .chrome-img{
+    height: 38px !important;
+    width: 38px !important;
+}
+
+.screen-chat .bar {
+    border: 1px solid #E2E2E2;
 }

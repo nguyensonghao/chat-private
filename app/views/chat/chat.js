@@ -49,10 +49,12 @@ angular.module('mazii')
             socket.emit('reset-socket-user', user);
             getDataWhenLogined();
             console.log('logined');
+            console.log($rootScope.user);
         }
 
     }
 
+    console.log($rootScope.user);
     if ($rootScope.user != null) {
         loadData();
         $scope.loadDone = true;

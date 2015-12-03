@@ -4382,3 +4382,159 @@ user is updated online
   status: 1 }
 user is updated online
 update user success
+Listening on http://127.0.0.1:9500/
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 1 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+user is updated online
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 1 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+user is updated online
+insert message success
+{ _id: '56600ff4e9cd886f20757fe9',
+  username: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 1 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+user is updated online
+update user success
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 0 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 0 }
+user is updated online
+{ name: 'Dung Tri',
+  id: '914437415306431',
+  email: '914437415306431@gmail.com' }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 1 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+user is updated online
+insert message success
+insert message success
+user recieve not online
+insert message private success
+insert message private success
+update user success
+{ _id: '56600ff4e9cd886f20757fe9',
+  username: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 0 }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 0 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 0 }
+user is updated online
+{ _id: '56600ff4e9cd886f20757fe9',
+  username: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 1 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+user is updated online
+insert message success
+{ _id: '56600ff4e9cd886f20757fe9',
+  username: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+test
+[ { _id: 56600ff4e9cd886f20757fe9,
+    username: null,
+    email: null,
+    date_register: '12/3/2015 4:48:36',
+    fbId: null,
+    status: 1 } ]
+{ _id: 56600ff4e9cd886f20757fe9,
+  username: null,
+  email: null,
+  date_register: '12/3/2015 4:48:36',
+  fbId: null,
+  status: 1 }
+user is updated online
+update user success
+update user success

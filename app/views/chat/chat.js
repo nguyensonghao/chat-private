@@ -492,7 +492,9 @@ angular.module('mazii')
     $scope.$on('loadFBDone', function(){
         loadData();
         $scope.loadDone = true;
-        $scope.$apply();
+        if(!$scope.$$phase) {
+            $scope.$apply();
+        }
     });
     
     setTimeout(function () {

@@ -20,6 +20,16 @@ methods.check_exits_email = function (user, listUser) {
     return false;   
 }
 
+methods.check_exits_fbId = function (user, listUser) {
+    for (var i = 0; i < listUser.length; i++) {
+        if (user.fbId == listUser[i].fbId) {
+            return true;
+        }
+    }
+
+    return false;   
+}
+
 methods.get_time = function () {
     var currentdate = new Date(); 
     var datetime =  (currentdate.getMonth()+1)  + "/" 
@@ -59,5 +69,6 @@ module.exports = {
     get_time : methods.get_time,
     get_date_time : methods.get_date_time,
     remove_email : methods.remove_email,
-    remove_list_email : methods.remove_list_email
+    remove_list_email : methods.remove_list_email,
+    check_exits_fbId : methods.check_exits_fbId
 }

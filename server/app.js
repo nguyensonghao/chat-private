@@ -80,8 +80,8 @@ if(err) {
     // Thay đổi socket của người dùng khi người dùng đã có tài khoản
     socket.on('reset-socket-user', function (user) {
         console.log(user);
-        if (util.check_exits_email(user, listUser)) {
-            collectionUser.find({fbId : user.id}).toArray(function (err, item) {
+        if (util.check_exits_fbId(user, listUser)) {
+            collectionUser.find({fbId : user.fbId}).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
                 } else {
@@ -119,10 +119,10 @@ if(err) {
 
         } else {
             var userInsert = {
-                username : user.name,
+                username : user.username,
                 email : user.email,
                 date_register : util.get_time(),
-                fbId : user.id,
+                fbId : user.fbId,
                 status : 1 // 1 => user online , 0 => user offline
             }
 

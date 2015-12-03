@@ -41,7 +41,7 @@ angular.module('mazii')
     var loadData = function () {
         user = $rootScope.user;
         $scope.user = $rootScope.user;
-        if (typeof(user) == 'undefined' ||user == null || user == '') {
+        if (typeof(user) == 'undefined' || user == null || user == '') {
             $scope.showLogin = true;
             console.log('not login');
         } else {
@@ -49,14 +49,13 @@ angular.module('mazii')
             socket.emit('reset-socket-user', user);
             getDataWhenLogined();
             console.log('logined');
-            console.log($rootScope.user);
         }
 
     }
 
     if ($rootScope.user != null) {
-        $scope.loadDone = true;
         loadData();
+        $scope.loadDone = true;
     } else {
         $scope.loadDone = true;
         $scope.showLogin = false;

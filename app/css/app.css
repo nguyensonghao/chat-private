@@ -347,7 +347,7 @@
 .screen-chat .enter-message {
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    width: calc(100% - 30px);
 }
 
 .screen-chat .bar {
@@ -358,7 +358,7 @@
 
 .screen-chat .bar .username {
     float: right;
-    margin-top: -6px;
+    margin-top: -9px;
 }
 
 .screen-chat .bar .username .dropdown-toggle {

@@ -236,17 +236,19 @@ angular.module('mazii')
     }
 
     $scope.formChat.enterChat = function (event, index) {
-        if (previousKeycode == 65) {
-            if (event.keyCode == 13) {
+        if (event.keyCode == 13) {
+            if (previousKeycode) {
                 var message = $('#enter-chat-message-' + index).val();
                 $('#enter-chat-message-' + index).val(message + '\n');
-            }
-        } else {
-            if (event.keyCode == 13) {
+            } else {
                 sendMessage(index);
             }
         }
-        previousKeycode = event.keyCode;
+
+        if (event.shiftKey)
+            previousKeycode = true;
+        else
+            previousKeycode = false;
     }
 
     var sendMessage = function (index) {

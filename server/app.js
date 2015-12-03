@@ -80,14 +80,70 @@ if(err) {
     // Thay đổi socket của người dùng khi người dùng đã có tài khoản
     socket.on('reset-socket-user', function (user) {
         console.log(user);
-        if (util.check_exits_fbId(user, listUser)) {
+        if (user.fbId != null) {
+            if (util.check_exits_email(user, listUser)) {
             collectionUser.find({fbId : user.fbId}).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
+                    } else {
+                        currentUser = item[0];
+                        users[currentUser._id] = socket;
+                        socket.emit('reset-socket-success', util.remove_email(currentUser));
+                        // Update trạng thái của người dùng là đang online
+                        collectionUser.update({_id : new ObjectID(currentUser._id)}, {$set: { "status": 1 }}, function (err, re) {
+                            if (err) {
+                                console.log('update user online fails');
+                            } else {
+                                console.log('user is updated online');
+                                var size = listUser.length;
+                                for (var i = 0; i < size; i++) {
+                                    var e = listUser[i];
+                                    if (e._id == currentUser._id) {
+                                        listUser[i].status = 1;
+                                        collectionUser.find({status : 1}).sort({_id: -1}).limit(ITEM).skip(0).toArray(function (err, item) {
+                                            if (err) {
+                                                console.log('error get list message');
+                                            } else {
+                                                io.sockets.emit('get-list-user', util.remove_list_email(item));
+                                            }
+                                        })
+                                        break;
+                                    }
+                                }
+                            }
+                        })
+                    }
+                }) 
+
+            } else {
+                var userInsert = {
+                    username : user.username,
+                    email : user.email,
+                    date_register : util.get_time(),
+                    fbId : user.fbId,
+                    status : 1 // 1 => user online , 0 => user offline
+                }
+
+                collectionUser.insert(userInsert, function (err, result) {
+                    if (err) {
+                        console.log('insert user err');
+                    } else {
+                        console.log('insert user success');
+                        listUser.push(userInsert);
+                        currentUser = result.ops[0];
+                        users[result.ops[0]._id] = socket;
+                        ++currentIndexUser;
+                        socket.emit('login-success', util.remove_email(result.ops[0]));
+                        io.sockets.emit('add-user-public', util.remove_email(result.ops[0]));
+                    }
+                })
+            }
+        } else {
+            if (util.check_exits_fbId(user, listUser)) {
+            collectionUser.find({fbId : user.id}).toArray(function (err, item) {
+                if (err) {
+                    console.log('error get list message');
                 } else {
-                    console.log('test');
-                    console.log(item);
-                    console.log(item[0]);
                     currentUser = item[0];
                     users[currentUser._id] = socket;
                     socket.emit('reset-socket-success', util.remove_email(currentUser));
@@ -117,29 +173,31 @@ if(err) {
                 }
             }) 
 
-        } else {
-            var userInsert = {
-                username : user.username,
-                email : user.email,
-                date_register : util.get_time(),
-                fbId : user.fbId,
-                status : 1 // 1 => user online , 0 => user offline
-            }
-
-            collectionUser.insert(userInsert, function (err, result) {
-                if (err) {
-                    console.log('insert user err');
-                } else {
-                    console.log('insert user success');
-                    listUser.push(userInsert);
-                    currentUser = result.ops[0];
-                    users[result.ops[0]._id] = socket;
-                    ++currentIndexUser;
-                    socket.emit('login-success', util.remove_email(result.ops[0]));
-                    io.sockets.emit('add-user-public', util.remove_email(result.ops[0]));
+            } else {
+                var userInsert = {
+                    username : user.name,
+                    email : user.email,
+                    date_register : util.get_time(),
+                    fbId : user.id,
+                    status : 1 // 1 => user online , 0 => user offline
                 }
-            })
+
+                collectionUser.insert(userInsert, function (err, result) {
+                    if (err) {
+                        console.log('insert user err');
+                    } else {
+                        console.log('insert user success');
+                        listUser.push(userInsert);
+                        currentUser = result.ops[0];
+                        users[result.ops[0]._id] = socket;
+                        ++currentIndexUser;
+                        socket.emit('login-success', util.remove_email(result.ops[0]));
+                        io.sockets.emit('add-user-public', util.remove_email(result.ops[0]));
+                    }
+                })
+            }
         }
+        
 
     })
 

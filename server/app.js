@@ -79,13 +79,14 @@ if(err) {
 
     // Thay đổi socket của người dùng khi người dùng đã có tài khoản
     socket.on('reset-socket-user', function (user) {
-        console.log(user);
         if (util.check_exits_email(user, listUser)) {
             collectionUser.find({fbId : user.fbId}).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
                 } else {
+                    console.log(item);
                     var result = item[0];
+                    console.log(result);
                     currentUser = result;
                     users[currentUser._id] = socket;
                     socket.emit('reset-socket-success', util.remove_email(currentUser));

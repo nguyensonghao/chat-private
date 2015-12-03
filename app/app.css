@@ -3651,3 +3651,38 @@ nav.navbar.navbar-fixed-top li{
 .result-word {
     padding: 0;
 }
+
+.note-content-block .history-type {
+    margin-right: 10px;
+}
+
+.mobile-app-marketing a img {
+    height: 32px;
+    width: 32px;
+    margin-left: 20px;
+}
+
+.list-marketing .big {
+    height: 50px;
+    width: 50px;
+    margin-left: 30px;
+}
+
+.marketing .col-md-6 ul li{
+    float: left;
+    list-style: none;
+    margin-left: 60px;
+    border: 1px solid #9197a3;
+    padding: 6px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#chat-module.hide-chat {
+    height: 40px;
+}
+
+#chat-module .chat-title {
+    font-size: 22px;
+    line-height: 40px;
+}

@@ -31,6 +31,7 @@
           <a href="https://itunes.apple.com/app/apple-store/id933081417" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'android-mobile-top')"><img class="app-link" src="imgs/app_store.png"></a>
           <a href="https://play.google.com/store/apps/details?id=com.mazii.dictionary" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-top')"><img class="app-link" src="imgs/google_play.png"></a>
           <a href="https://www.microsoft.com/store/apps/9NBLGGH3TCHJ" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-top')"><img class="app-link" src="imgs/English_wstore_black_258x67.png"></a>
+          <a href="#" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-top')"><img class="app-link" src="imgs/chrome.png"></a>
       </div>
       
       <section class="app-bar-actions">
@@ -88,13 +89,7 @@
                   Đọc báo
                 </a>
               </li>
-              <li ng-class="getState('write')">
-                <a href="#/write">
-                  <i class="fa fa-openid fa-fw fa-lg"></i>
-                  Tập viết
-                </a>
-              </li>
-              <li ng-class="getState('help')">
+              <!-- <li ng-class="getState('help')">
                 <a href="#/help">
                   <i class="fa fa-life-ring fa-fw fa-lg"></i>
                   Trợ giúp
@@ -105,11 +100,17 @@
                   <i class="fa fa-smile-o fa-fw fa-lg"></i> 
                   Về Mazii
                 </a>
-              </li>
+              </li> -->
               <li ng-class="getState('chat')">
                 <a href="#/chat">
                   <i class="fa fa-commenting-o fa-fw fa-lg"></i> 
                   Chat
+                </a>
+              </li>
+              <li ng-class="getState('write')">
+                <a href="#/write">
+                  <i class="fa fa-openid fa-fw fa-lg"></i>
+                  Tập viết
                 </a>
               </li>
             </ul>
@@ -198,17 +199,28 @@
 
   <div class="marketing">
     <div class="container">
-      <div class="col-md-6 col-lg-6">
-        <a href="https://itunes.apple.com/app/apple-store/id933081417" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-bottom')"><img class="app-link" src="imgs/app_store.png"></a>
-        <a href="https://play.google.com/store/apps/details?id=com.mazii.dictionary" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'android-mobile-bottom')"><img class="app-link" src="imgs/google_play.png"></a>
-        <a href="https://www.microsoft.com/store/apps/9NBLGGH3TCHJ" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-bottom')"><img class="app-link" src="imgs/English_wstore_black_258x67.png"></a>
+      <div class="col-md-6 col-lg-6 list-marketing">
+        <a href="https://itunes.apple.com/app/apple-store/id933081417" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'iphone-mobile-bottom')"><img class="app-link big" src="imgs/app_store2.png"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.mazii.dictionary" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'android-mobile-bottom')"><img class="app-link big" src="imgs/google_play.png"></a>
+        <a href="https://www.microsoft.com/store/apps/9NBLGGH3TCHJ" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'wp-mobile-bottom')"><img class="app-link big" src="imgs/English_wstore_black2_258x67.png"></a>
         <h3>Mazii mobile</h3>
         <p>Phiên bản offline dành cho điện thoại.</p>
-      </div>
-      <div class="col-md-6 col-lg-6">
         <a href="https://chrome.google.com/webstore/detail/translate-japanese-mazii/lkjffochdceoneajnigkbdddjdekhojj" target="_blank" onclick="ga('send', 'event', 'button', 'click', 'chrome-extension-bottom')"><img class="app-link" src="imgs/ChromeWebStore_Badge_v2_496x150.png"></a>
         <h3>Mazii trên Chrome, Cốc Cốc</h3>
         <p>Tra cứu tiếng Nhật trên mọi website khác, chỉ cần click đúp chuột.</p>
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <ul>
+          <li>
+            <i class="fa fa-smile-o fa-fw fa-lg"></i> 
+            Về Mazii
+          </li>
+          <li>
+            <i class="fa fa-life-ring fa-fw fa-lg"></i>
+            Trợ giúp
+          </li>
+        </ul>
+        <div class="fb-page" data-href="https://www.facebook.com/maziinet/?fref=ts" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/maziinet/?fref=ts"><a href="https://www.facebook.com/maziinet/?fref=ts">Mazii.net</a></blockquote></div></div>
       </div>
     </div>
   </div>

@@ -85,11 +85,10 @@ if(err) {
                 if (err) {
                     console.log('error get list message');
                 } else {
-                    if (item.length == 0) {
-                        console.log('empty');
-                    }
-                    var result = item[0];
-                    currentUser = result;
+                    console.log('test');
+                    console.log(item);
+                    console.log(item[0]);
+                    currentUser = item[0];
                     users[currentUser._id] = socket;
                     socket.emit('reset-socket-success', util.remove_email(currentUser));
                     // Update trạng thái của người dùng là đang online

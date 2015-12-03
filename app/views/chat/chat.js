@@ -237,10 +237,7 @@ angular.module('mazii')
 
     $scope.formChat.enterChat = function (event, index) {
         if (event.keyCode == 13) {
-            if (event.shiftKey === true) {
-                var message = $('#enter-chat-message-' + index).val();
-                $('#enter-chat-message-' + index).val(message + '\n');
-            } else {
+            if (!event.shiftKey) {
                 sendMessage(index);   
             }
         }
@@ -263,6 +260,7 @@ angular.module('mazii')
 
             // Gửi tin nhắn tới server 
             socket.emit('send-message-public', msg);
+            $('#enter-chat-message-' + index).val().replace(/\n/g, "");
             $('#enter-chat-message-' + index).val('');
         }
     }
@@ -372,9 +370,10 @@ angular.module('mazii')
     }
 
     $scope.formChat.enterChatPrivate = function (event) {
-        var keyCode = event.keyCode;
-        if (keyCode == 13) {
-            sendMessagePrivate();
+        if (event.keyCode == 13) {
+            if (!event.shiftKey) {
+                sendMessagePrivate();    
+            }
         }
     }
 
@@ -391,6 +390,8 @@ angular.module('mazii')
         }
 
         socket.emit('send-message-private', msg);
+
+        $('#enter-chat-message-6').val().replace(/\n/g, "");
         $('#enter-chat-message-6').val('');
     }
 

@@ -27,6 +27,7 @@ angular.module('mazii')
     var indexMessagePublic = 0;
     var indexMessagePrivate = 0;
     var indexUser = 0;
+    var previousKeycode;
 
     var getDataWhenLogined = function () {
         socket.emit('get-list-message-private-in-public', user);
@@ -235,9 +236,17 @@ angular.module('mazii')
     }
 
     $scope.formChat.enterChat = function (event, index) {
-        // if (event.keyCode == 13) {
-        //     sendMessage(index);
-        // }
+        if (previousKeycode == 65) {
+            if (event.keyCode == 13) {
+                var message = $('#enter-chat-message-' + index).val();
+                $('#enter-chat-message-' + index).val(message + '\n');
+            }
+        } else {
+            if (event.keyCode == 13) {
+                sendMessage(index);
+            }
+        }
+        previousKeycode = event.keyCode;
     }
 
     var sendMessage = function (index) {

@@ -54,7 +54,6 @@ angular.module('mazii')
 
     }
 
-    console.log($rootScope.user);
     if ($rootScope.user != null) {
         loadData();
         $scope.loadDone = true;

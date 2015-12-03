@@ -262,6 +262,7 @@ angular.module('mazii')
             socket.emit('send-message-public', msg);
             $('#enter-chat-message-' + index).val().replace(/\n/g, "");
             $('#enter-chat-message-' + index).val('');
+	    console.log($('#enter-chat-message-'+ index).val());
         }
     }
 

@@ -263,7 +263,6 @@ angular.module('mazii')
             // Gửi tin nhắn tới server 
             socket.emit('send-message-public', msg);
             $('#enter-chat-message-' + index).val('');
-	    console.log($('#enter-chat-message-'+ index).val());
         }
     }
 

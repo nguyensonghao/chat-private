@@ -26,3 +26,140 @@ TypeError: Cannot call method 'emit' of undefined
 Option match origin procotol is not valid. Please refer to the README.
 Option match origin procotol is not valid. Please refer to the README.
 Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:90:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.
+
+/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:98
+    process.nextTick(function() { throw err; });
+                                        ^
+TypeError: Cannot read property '_id' of undefined
+    at /home/haons/chat-server/chat-private/server/app.js:93:38
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/lib/utils.js:96:12)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/lib/cursor.js:842:16
+    at handleCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:244:5)
+    at setCursorNotified (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:564:3)
+    at /home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:672:16
+    at queryCallback (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js:323:5)
+    at Callbacks.emit (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:95:3)
+    at null.messageHandler (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js:243:23)
+    at Socket.<anonymous> (/home/haons/chat-server/chat-private/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js:262:22)
+Option match origin procotol is not valid. Please refer to the README.
+Option match origin procotol is not valid. Please refer to the README.

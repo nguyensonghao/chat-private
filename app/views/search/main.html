@@ -25,7 +25,7 @@
     </div>
     <ng-kanji-recognize ng-if="isShowKanjiDraw()"></ng-kanji-recognize>
 </div>
-<div class="list-suggest-history col-xs-12 col-md-8">
+<div class="list-suggest-history col-xs-12 col-md-8" id="list-suggest-history">
     <div class="suggest-item" ng-repeat="item in suggestSen track by $index" ng-click="suggestClick(item)">
         <span><b>{{ item.split(' ')[0] }}</b> {{ item.replace(item.split(' ')[0], '') }} </span>
     </div>

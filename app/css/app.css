@@ -687,3 +687,19 @@
     font-weight: bold;
     margin-top: 20px;
 }
+
+.active-suggest {
+    background: #4285F4;
+    border-bottom: 1px solid #CCC9C9;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: rgba(0, 0, 0, 0.72);
+    cursor: pointer;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+}
+
+.active-suggest span {
+    color: white;
+}

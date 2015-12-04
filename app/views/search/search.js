@@ -217,6 +217,7 @@ angular.module('mazii')
 
                 //console.log(query);
                 $scope.suggestSen = $scope.filter(sen);
+                new autocomplete( 'search-text-box', 'list-suggest-history' );
                 var width = $('.search-box-range').width();
                 $('.list-suggest-history').css('width', width);
                 if (!$scope.$$phase && !$rootScope.$$phase) {
@@ -581,6 +582,76 @@ angular.module('mazii')
     $rootScope.$on('chaneShowSuggest', function(data){
         showSuggestSearch = localstoreServ.getItem('showSuggest');
     });
+
+    var scrolLength = 100;
+
+    var autocomplete = function ( textBoxId, containerDivId ) { 
+        var ac = this;    
+        this.textbox     = document.getElementById(textBoxId);    
+        this.div         = document.getElementById(containerDivId);    
+        this.list        = this.div.getElementsByTagName('div');    
+        this.pointer     = null;    
+        this.textbox.onkeydown = function( e ) {
+            e = e || window.event;        
+            switch( e.keyCode ) {            
+            case 38: //up                
+                ac.selectDiv(-1);                
+            break;            
+            case 40: //down                
+                ac.selectDiv(1);                
+            break;        }    
+            }    
+            this.selectDiv = function( inc ) {        
+                if(this.pointer > 1){
+                     scrollDiv();
+                }
+
+                if(this.pointer == 0)
+                    document.getElementById("list-suggest-history").scrollTop = 0;   
+
+                if( this.pointer !== null && this.pointer+inc >= 0 && this.pointer+inc < this.list.length ) { 
+                    this.list[this.pointer].className = 'suggest-item';            
+                    this.pointer += inc;            
+                    this.list[this.pointer].className = 'active-suggest';            
+                    var string = this.list[this.pointer].innerHTML;
+                    string = string.substring(56, string.length);
+                    for (var i = 0; i < string.length; i++) {
+                        if (string[i] == '<') {
+                            string = string.substring(0, i);
+                            break;
+                        }
+                    }
+
+                    this.textbox.value = string;
+                }
+
+                if( this.pointer === null ) {            
+                    this.pointer = 0;            
+                    scrolLength = 20;
+                    this.list[this.pointer].className = 'active-suggest';            
+                    var string = this.list[this.pointer].innerHTML;
+                    string = string.substring(56, string.length);
+                    for (var i = 0; i < string.length; i++) {
+                        if (string[i] == '<') {
+                            string = string.substring(0, i);
+                            break;
+                        }
+                    }
+
+                    this.textbox.value = string;
+                }    
+            }
+            function scrollDiv(){
+               if(window.event.keyCode == 40){
+                   document.getElementById("list-suggest-history").scrollTop = scrolLength;
+                   scrolLength = scrolLength + 19;  
+               }           
+               else if(window.event.keyCode == 38){
+                   scrolLength = scrolLength - 19;  
+                   document.getElementById("list-suggest-history").scrollTop = scrolLength;
+               }
+            }
+        } 
     
     $('body').removeClass('hidden');
     

@@ -3130,7 +3130,7 @@ a.links-news-title.news_active:hover {
     z-index: 20;
 }
 
-.suggest-item.ng-scope {
+.suggest-item {
     border-bottom: 1px solid #CCC9C9;
     padding-top: 8px;
     padding-bottom: 8px;

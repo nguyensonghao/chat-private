@@ -126,6 +126,16 @@ angular.module('mazii', [
                 controller: 'ChatController'
             }
         }
+    })
+
+    .state('term', {
+        url: '/term',
+        views: {
+            "main": {
+                templateUrl: 'views/term/main.html',
+                controller: 'TermController'
+            }
+        }
     });
     
     $sceProvider.enabled(false);
@@ -504,7 +514,7 @@ angular.module('mazii', [
     var setLayout = function () {
         var stateName = $state.current.name;
         var view1 = '', view2 = '', view3 = '';
-        if(stateName == 'search' || stateName == 'write'){
+        if(stateName == 'search' || stateName == 'write' || stateName == 'term'){
             view1 = 'col-md-12 col-xs-12';
             view2 = 'col-md-3 col-lg-3';
             view3 = 'col-md-3 col-lg-3';

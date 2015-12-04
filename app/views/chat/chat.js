@@ -49,7 +49,7 @@ angular.module('mazii')
             socket.emit('reset-socket-user', user);
             getDataWhenLogined();
             console.log('logined');
-            console.log($rootScope.user);
+            // console.log($rootScope.user);
         }
 
     }
@@ -226,6 +226,7 @@ angular.module('mazii')
             date_send : msg.date_send,
             userId : msg.userId
         }
+
         $scope.listMessage.push(message);
         scrollBottomListMessage();
         $scope.$apply();

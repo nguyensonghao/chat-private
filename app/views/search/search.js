@@ -217,6 +217,8 @@ angular.module('mazii')
 
                 //console.log(query);
                 $scope.suggestSen = $scope.filter(sen);
+                var width = $('.search-box-range').width();
+                $('.list-suggest-history').css('width', width);
                 if (!$scope.$$phase && !$rootScope.$$phase) {
                     $scope.$digest();
                 }

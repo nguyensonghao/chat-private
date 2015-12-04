@@ -670,3 +670,20 @@
 .screen-chat .bar {
     border: 1px solid #E2E2E2;
 }
+
+.screen-chat {
+    height: 450px;
+}
+
+.chat-public .list-message {
+    height: 400px;
+}
+
+.term-screen {
+    margin-top: 10px;
+}
+
+.term-screen .title {
+    font-weight: bold;
+    margin-top: 20px;
+}

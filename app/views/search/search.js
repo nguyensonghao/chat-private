@@ -217,6 +217,9 @@ angular.module('mazii')
 
                 //console.log(query);
                 $scope.suggestSen = $scope.filter(sen);
+                if ($scope.tabSelected == 1 && !dictUtilSer.isJapanese(query))
+                    $scope.suggestSen = [];
+                
                 new autocomplete( 'search-text-box', 'list-suggest-history' );
                 var width = $('.search-box-range').width();
                 $('.list-suggest-history').css('width', width);
@@ -404,7 +407,6 @@ angular.module('mazii')
             });
             
         } else if ($scope.tabSelected == 1) {
-            
             maziiServ.search("kanji", query).then(function (data) {
                 $scope.currentKanjiSelected = 0;
                 if (data.status == 200) {

@@ -1,5 +1,8 @@
 $(document).ready(function () {
 	$(window).scroll(function () {
+		if ($('body').width() <= 980)
+			return;
+
 		var X = $(this).scrollTop();
 		if (X > 104) {
 			$('.app-bar').css('display', 'none');

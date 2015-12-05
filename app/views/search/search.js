@@ -644,10 +644,10 @@ angular.module('mazii')
             function scrollDiv(){
                if(window.event.keyCode == 40){
                    document.getElementById("list-suggest-history").scrollTop = scrolLength;
-                   scrolLength = scrolLength + 19;  
+                   scrolLength = scrolLength + 40;  
                }           
                else if(window.event.keyCode == 38){
-                   scrolLength = scrolLength - 19;  
+                   scrolLength = scrolLength - 40;  
                    document.getElementById("list-suggest-history").scrollTop = scrolLength;
                }
             }

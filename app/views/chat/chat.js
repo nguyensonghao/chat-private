@@ -223,8 +223,8 @@ angular.module('mazii')
             var message = {
                 _id : msg._id,
                 username : msg.username,
-                message1 : dubMessage.msg1.content,
-                message2 : dubMessage.msg2.content,
+                message1 : dubMessage[0],
+                message2 : dubMessage[1],
                 index : msg.index,
                 date_send : msg.date_send,
                 userId : msg.userId,

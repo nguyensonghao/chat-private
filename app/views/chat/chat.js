@@ -233,7 +233,6 @@ angular.module('mazii')
     socket.on('receive-message-public', function (msg) {
         if (dictUtilSer.renderHtmlMessage(msg).length > 1) {
             var dubMessage = dictUtilSer.renderHtmlMessage(msg);
-	    console.log(dubMessage);
             var message = {
                 _id : msg._id,
                 username : msg.username,
@@ -433,14 +432,27 @@ angular.module('mazii')
         var size = listMessage.length;
         for (var i = 0; i < size; i++) {
             var msg = listMessage[i];
-            var message = {
-                _id : msg._id,
-                username : msg.username,
-                message : msg.content,
-                index : msg.index,
-                date_send : msg.date_send,
-                userId : msg.userId
-            }
+            if (dictUtilSer.renderHtmlMessage(listMessage[i]).length > 1) {
+                var dubMessage = dictUtilSer.renderHtmlMessage(listMessage[i]);
+                var message = {
+                    _id : listMessage[i]._id,
+                    username : listMessage[i].username,
+                    index : index,
+                    message : dubMessage,
+                    date_send : listMessage[i].date_send,
+                    userId : listMessage[i].userId,
+                    newLine : true
+                }
+            } else {
+                var message = {
+                    _id : listMessage[i]._id,
+                    username : listMessage[i].username,
+                    message : listMessage[i].content,
+                    index : index,
+                    date_send : listMessage[i].date_send,
+                    userId : listMessage[i].userId
+                }
+            }        
             $scope.listMessage.unshift(message);
         }
         $scope.$apply();
@@ -555,6 +567,11 @@ angular.module('mazii')
     })
 
     $scope.translateMessage = function (message, id) {
+        if (typeof(message) == 'array') {
+            message = message.toString();
+            message = message.replace(/,/g, ' '));    
+        }
+        
         var e = $('.text-'+id+' > .trans');
         if (e.length != 0 || !e == null) 
             return;

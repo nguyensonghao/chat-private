@@ -3706,3 +3706,12 @@ nav.navbar.navbar-fixed-top li{
     text-align: center;
     margin-top: 28px;
 }
+
+.navbar-fixed {
+    position: fixed !important; 
+    top: 0px !important;
+}
+
+.main-contain-fixed {
+    margin-top: 170px !important;
+}

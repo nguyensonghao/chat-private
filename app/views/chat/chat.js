@@ -220,11 +220,12 @@ angular.module('mazii')
     socket.on('receive-message-public', function (msg) {
         if (dictUtilSer.renderHtmlMessage(msg).length == 2) {
             var dubMessage = dictUtilSer.renderHtmlMessage(msg);
+	    console.log(dubMessage);
             var message = {
                 _id : msg._id,
                 username : msg.username,
-                message1 : dubMessage.msg1.content,
-                message2 : dubMessage.msg2.content,
+                message1 : dubMessage[0].content,
+                message2 : dubMessage[1].content,
                 index : msg.index,
                 date_send : msg.date_send,
                 userId : msg.userId,

@@ -4538,3 +4538,292 @@ test
 user is updated online
 update user success
 update user success
+Listening on http://127.0.0.1:9500/
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+user is updated online
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+{ _id: '56600fce89f1c05a2052ae10',
+  username: 'Nguyễn Song Hào',
+  date_register: '12/3/2015 4:47:58',
+  fbId: '778207895658461',
+  status: 0 }
+user is updated online
+update user success
+insert message success
+update user success
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+user is updated online
+{ name: 'Vĩ Ngô Văn',
+  id: '10204724184977379',
+  email: '10204724184977379@gmail.com' }
+insert user success
+insert message success
+insert message success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+insert message private success
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 1 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 2 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 3 }
+update user success
+user offline
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 4 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 5 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 6 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 7 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 8 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 9 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 10 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 11 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 12 }
+{ userReceive: { _id: '56605bf356086a23273facbe', username: 'Vĩ Ngô Văn' },
+  userSend: 
+   { _id: '566015b0b5a6183d2189cc02',
+     username: 'Trình Nguyễn',
+     date_register: '12/3/2015 5:13:4',
+     fbId: '10205084215455619',
+     status: 0 },
+  index: 13 }
+update user success
+{ _id: '566015b0b5a6183d2189cc02',
+  username: 'Trình Nguyễn',
+  date_register: '12/3/2015 5:13:4',
+  fbId: '10205084215455619',
+  status: 0 }
+user is updated online
+{ _id: '566015b0b5a6183d2189cc02',
+  username: 'Trình Nguyễn',
+  date_register: '12/3/2015 5:13:4',
+  fbId: '10205084215455619',
+  status: 0 }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+{ _id: '56600fce89f1c05a2052ae10',
+  username: 'Nguyễn Song Hào',
+  date_register: '12/3/2015 4:47:58',
+  fbId: '778207895658461',
+  status: 0 }
+user is updated online
+{ _id: '56600fce89f1c05a2052ae10',
+  username: 'Nguyễn Song Hào',
+  date_register: '12/3/2015 4:47:58',
+  fbId: '778207895658461',
+  status: 1 }
+user is updated online
+insert message success
+insert message success
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+user is updated online
+update user success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+user is updated online
+{ name: 'Trình Nguyễn',
+  id: '10205084215455619',
+  email: '10205084215455619@gmail.com' }
+user is updated online
+update user success
+{ _id: '566015b0b5a6183d2189cc02',
+  username: 'Trình Nguyễn',
+  date_register: '12/3/2015 5:13:4',
+  fbId: '10205084215455619',
+  status: 0 }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success

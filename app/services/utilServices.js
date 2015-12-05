@@ -862,7 +862,7 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
     }
 
     service.renderHtmlMessage = function (message) {
-        return message.split('\n');
+        return message.content.split('\n');
     }
 
     service.renderHtmlListMessage = function (listMessage) {

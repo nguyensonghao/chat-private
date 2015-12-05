@@ -858,19 +858,19 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
     }
 
     service.checkExistNewlineinMessage = function (message) {
-        return message.indexOf('\n');
+        return message.content.indexOf('\n');
     }
 
     service.renderHtmlMessage = function (message) {
         var indexOf = service.checkExistNewlineinMessage(message);
         if (indexOf == 0) {
-            return message.substring(2, message.length);
+            return message.substring(2, message.content.length);
         } else if (indexOf > 0) {
             var result = [];
             var msg1 = message;
             var msg2 = message;
-            msg1.content = message.substring(0, indexOf);
-            msg2.content = message.substring(indexOf + 2, message.length);            
+            msg1.content = message.content.substring(0, indexOf);
+            msg2.content = message.content.substring(indexOf + 2, message.content.length);            
             result.push(msg1);
             result.push(msg2);
             return result;

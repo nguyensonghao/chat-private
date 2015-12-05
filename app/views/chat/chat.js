@@ -166,14 +166,29 @@ angular.module('mazii')
         $scope.listMessage = [];
         for (var i = 0; i < size; i++) {
             var index = listMessage[i].index;
-            var message = {
-                _id : listMessage[i]._id,
-                username : listMessage[i].username,
-                message : listMessage[i].content,
-                index : listMessage[i].index,
-                date_send : listMessage[i].date_send,
-                userId : listMessage[i].userId
-            }
+            if (dictUtilSer.renderHtmlMessage(listMessage[i]).length > 1) {
+                var dubMessage = dictUtilSer.renderHtmlMessage(msg);
+                var message = {
+                    _id : listMessage[i]._id,
+                    username : listMessage[i].username,
+                    index : index,
+                    message : dubMessage,
+                    date_send : listMessage[i].date_send,
+                    userId : listMessage[i].userId,
+                    newLine : true
+                }
+            } else {
+                msg = dictUtilSer.renderHtmlMessage(msg);
+                var message = {
+                    _id : listMessage[i]._id,
+                    username : listMessage[i].username,
+                    message : listMessage[i].content,
+                    index : index,
+                    date_send : listMessage[i].date_send,
+                    userId : listMessage[i].userId
+                }
+                $scope.listMessage.push(message);
+            }        
             $scope.listMessage.unshift(message);
         }
 
@@ -459,6 +474,10 @@ angular.module('mazii')
     //Nhận tin nhắn private
     socket.on('receive-message-pravite', function (msg) {
         // Kiểm tra xem tin nhắn mới nhận có là của người đã gửi không
+        if (dictUtilSer.renderHtmlMessagePrivate(msg).length > 1) {
+            msg.newLine = true;
+            msg.message = dictUtilSer.renderHtmlMessagePrivate(msg);
+        }
         $scope.listMessagePrivate.push(msg);
         $('.list-message-private').animate({ scrollTop: 10000 }, 500);
         var size = $scope.listmessageReceive.length;

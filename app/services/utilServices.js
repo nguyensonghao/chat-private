@@ -865,18 +865,20 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
         return message.content.split('\n');
     }
 
+    service.renderHtmlMessagePrivate = function (message) {
+        return message.message.split('\n');
+    }
+
     service.renderHtmlListMessage = function (listMessage) {
         var size = listMessage.length;
-        var result = [];
         for (var i = 0; i < size; i++) {
-            var message = listMessage[i];
-            var indexOf = service.checkExistNewlineinMessage(message);
-            if (indexOf != -1) {
-
-            } else {
-
+            var msg = service.renderHtmlMessage(listMessage[i]);
+            if (msg.length > 1) {
+                listMessage[i].newLine = true;
+                listMessage.content = msg;
             }
         }
+        return listMessage;
     }
     
     loadMiniKanjiDict();

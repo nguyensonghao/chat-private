@@ -569,7 +569,7 @@ angular.module('mazii')
     $scope.translateMessage = function (message, id) {
         if (typeof(message) == 'array') {
             message = message.toString();
-            message = message.replace(/,/g, ' '));    
+            message = message.replace(/,/g, ' ');    
         }
         
         var e = $('.text-'+id+' > .trans');

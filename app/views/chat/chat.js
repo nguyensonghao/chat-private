@@ -437,7 +437,7 @@ angular.module('mazii')
                 var message = {
                     _id : listMessage[i]._id,
                     username : listMessage[i].username,
-                    index : index,
+                    index : listMessage[i].index,
                     message : dubMessage,
                     date_send : listMessage[i].date_send,
                     userId : listMessage[i].userId,
@@ -448,7 +448,7 @@ angular.module('mazii')
                     _id : listMessage[i]._id,
                     username : listMessage[i].username,
                     message : listMessage[i].content,
-                    index : index,
+                    index : listMessage[i].index,
                     date_send : listMessage[i].date_send,
                     userId : listMessage[i].userId
                 }

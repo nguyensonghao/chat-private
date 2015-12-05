@@ -867,10 +867,8 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
             return message.substring(2, message.content.length);
         } else if (indexOf > 0) {
             var result = [];
-            var msg1 = message;
-            var msg2 = message;
-            msg1.content = message.content.substring(0, indexOf);
-            msg2.content = message.content.substring(indexOf + 2, message.content.length);            
+            var msg1 = (message.content).substring(0, indexOf);
+            var msg2 = (message.content).substring(indexOf + 2, message.content.length);            
             result.push(msg1);
             result.push(msg2);
             return result;

@@ -21,8 +21,10 @@ angular.module('mazii')
 
     var showKanjiDraw = false;
     var currentQuery = '';
-    var tabName = 'word';
-    var showSuggestSearch = localstoreServ.getItem('showSuggest');
+
+    var string = {};
+    string.content = 'nguyensonghao \n hehe';
+    console.log(dictUtilSer.renderHtmlMessage(string));
     
     $scope.showKanjiDrawTable = function () {
         showKanjiDraw = !showKanjiDraw;
@@ -219,7 +221,7 @@ angular.module('mazii')
                 $scope.suggestSen = $scope.filter(sen);
                 if ($scope.tabSelected == 1 && !dictUtilSer.isJapanese(query))
                     $scope.suggestSen = [];
-                
+
                 new autocomplete( 'search-text-box', 'list-suggest-history' );
                 var width = $('.search-box-range').width();
                 $('.list-suggest-history').css('width', width);

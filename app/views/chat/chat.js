@@ -567,7 +567,7 @@ angular.module('mazii')
     })
 
     $scope.translateMessage = function (message, id) {
-        if (typeof(message) == 'array') {
+        if (typeof(message) == 'object') {
             message = message.toString();
             message = message.replace(/,/g, ' ');    
         }

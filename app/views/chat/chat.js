@@ -167,7 +167,7 @@ angular.module('mazii')
         for (var i = 0; i < size; i++) {
             var index = listMessage[i].index;
             if (dictUtilSer.renderHtmlMessage(listMessage[i]).length > 1) {
-                var dubMessage = dictUtilSer.renderHtmlMessage(msg);
+                var dubMessage = dictUtilSer.renderHtmlMessage(listMessage[i]);
                 var message = {
                     _id : listMessage[i]._id,
                     username : listMessage[i].username,

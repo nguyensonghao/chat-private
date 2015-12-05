@@ -113,8 +113,9 @@
 					<div class="text text-{{message._id}}">
 						<span ng-if="!message.newLine">{{ message.message }}</span>
 						<span ng-if="message.newLine">
-							{{ message.message1 }}<br>
-							{{ message.message2 }}
+							<p ng-repeat="line in message.message">
+								{{line}}
+							</p>
 						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
@@ -146,7 +147,12 @@
 						</div>
 					</div> 
 					<div class="text text-{{message._id}}">
-						{{ message.message }} 
+						<span ng-if="!message.newLine">{{ message.message }}</span>
+						<span ng-if="message.newLine">
+							<p ng-repeat="line in message.message">
+								{{line}}
+							</p>
+						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
 							dịch
@@ -176,7 +182,12 @@
 						</div>
 					</div> 
 					<div class="text text-{{message._id}}">
-						{{ message.message }} 
+						<span ng-if="!message.newLine">{{ message.message }}</span>
+						<span ng-if="message.newLine">
+							<p ng-repeat="line in message.message">
+								{{line}}
+							</p>
+						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
 							dịch
@@ -206,7 +217,12 @@
 						</div>
 					</div> 
 					<div class="text text-{{message._id}}">
-						{{ message.message }} 
+						<span ng-if="!message.newLine">{{ message.message }}</span>
+						<span ng-if="message.newLine">
+							<p ng-repeat="line in message.message">
+								{{line}}
+							</p>
+						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
 							dịch
@@ -236,7 +252,12 @@
 						</div>
 					</div> 
 					<div class="text text-{{message._id}}">
-						{{ message.message }} 
+						<span ng-if="!message.newLine">{{ message.message }}</span>
+						<span ng-if="message.newLine">
+							<p ng-repeat="line in message.message">
+								{{line}}
+							</p>
+						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
 							dịch
@@ -266,7 +287,12 @@
 						</div>
 					</div> 
 					<div class="text text-{{message._id}}">
-						{{ message.message }} 
+						<span ng-if="!message.newLine">{{ message.message }}</span>
+						<span ng-if="message.newLine">
+							<p ng-repeat="line in message.message">
+								{{line}}
+							</p>
+						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
 							dịch
@@ -296,7 +322,12 @@
 							</div>
 						</div> 
 						<div class="text text-{{message._id}}">
-							{{ message.message }} 
+							<span ng-if="!message.newLine">{{ message.message }}</span>
+							<span ng-if="message.newLine">
+								<p ng-repeat="line in message.message">
+									{{line}}
+								</p>
+							</span>
 							<button class="translate" 
 							ng-click="translateMessage(message.message, message._id)">
 								dịch

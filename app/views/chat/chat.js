@@ -178,7 +178,6 @@ angular.module('mazii')
                     newLine : true
                 }
             } else {
-                msg = dictUtilSer.renderHtmlMessage(msg);
                 var message = {
                     _id : listMessage[i]._id,
                     username : listMessage[i].username,
@@ -187,7 +186,6 @@ angular.module('mazii')
                     date_send : listMessage[i].date_send,
                     userId : listMessage[i].userId
                 }
-                $scope.listMessage.push(message);
             }        
             $scope.listMessage.unshift(message);
         }

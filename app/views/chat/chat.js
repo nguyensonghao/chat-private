@@ -218,14 +218,13 @@ angular.module('mazii')
 
     // Nhận tin nhắn public
     socket.on('receive-message-public', function (msg) {
-        if (dictUtilSer.renderHtmlMessage(msg).length == 2) {
+        if (dictUtilSer.renderHtmlMessage(msg).length > 1) {
             var dubMessage = dictUtilSer.renderHtmlMessage(msg);
             var message = {
                 _id : msg._id,
                 username : msg.username,
-                message1 : dubMessage[0],
-                message2 : dubMessage[1],
                 index : msg.index,
+                message : dubMessage,
                 date_send : msg.date_send,
                 userId : msg.userId,
                 newLine : true

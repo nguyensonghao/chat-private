@@ -218,16 +218,31 @@ angular.module('mazii')
 
     // Nhận tin nhắn public
     socket.on('receive-message-public', function (msg) {
-        var message = {
-            _id : msg._id,
-            username : msg.username,
-            message : msg.content,
-            index : msg.index,
-            date_send : msg.date_send,
-            userId : msg.userId
-        }
-
-        $scope.listMessage.push(message);
+        if (dictUtilSer.renderHtmlMessage(msg).length == 2) {
+            var dubMessage = dictUtilSer.renderHtmlMessage(msg);
+            var message = {
+                _id : msg._id,
+                username : msg.username,
+                message1 : dubMessage.msg1.content,
+                message2 : dubMessage.msg2.content,
+                index : msg.index,
+                date_send : msg.date_send,
+                userId : msg.userId,
+                newLine : true
+            }
+            $scope.listMessage.push(message);
+        } else {
+            msg = dictUtilSer.renderHtmlMessage(msg);
+            var message = {
+                _id : msg._id,
+                username : msg.username,
+                message : msg.content,
+                index : msg.index,
+                date_send : msg.date_send,
+                userId : msg.userId
+            }
+            $scope.listMessage.push(message);
+        }        
         scrollBottomListMessage();
         $scope.$apply();
     })

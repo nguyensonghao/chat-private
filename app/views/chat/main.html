@@ -111,7 +111,11 @@
 						</div>
 					</div> 
 					<div class="text text-{{message._id}}">
-						{{ message.message }} 
+						<span ng-if="!message.newLine">{{ message.message }}</span>
+						<span ng-if="message.newLine">
+							{{ message.message1 }}<br>
+							{{ message.message2 }}
+						</span>
 						<button class="translate" 
 						ng-click="translateMessage(message.message, message._id)">
 							dịch

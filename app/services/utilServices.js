@@ -856,6 +856,42 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
     service.hiddenTitlePage = function () {
         $('.title-page').addClass('hidden-title');
     }
+
+    service.checkExistNewlineinMessage = function (message) {
+        return message.indexOf('\n');
+    }
+
+    service.renderHtmlMessage = function (message) {
+        var indexOf = checkExistNewlineinMessage(message);
+        if (indexOf == 0) {
+            return message.substring(2, message.length);
+        } else if (indexOf > 0) {
+            var result = [];
+            var msg1 = message;
+            var msg2 = message;
+            msg1.content = message.substring(0, indexOf);
+            msg2.content = message.substring(indexOf + 2, message.length);            
+            result.push(msg1);
+            result.push(msg2);
+            return result;
+        } else {
+            return message;
+        }
+    }
+
+    service.renderHtmlListMessage = function (listMessage) {
+        var size = listMessage.length;
+        var result = [];
+        for (var i = 0; i < size; i++) {
+            var message = listMessage[i];
+            var indexOf = checkExistNewlineinMessage(message);
+            if (indexOf != -1) {
+
+            } else {
+
+            }
+        }
+    }
     
     loadMiniKanjiDict();
     

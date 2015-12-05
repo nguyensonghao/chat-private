@@ -862,7 +862,7 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
     }
 
     service.renderHtmlMessage = function (message) {
-        var indexOf = checkExistNewlineinMessage(message);
+        var indexOf = service.checkExistNewlineinMessage(message);
         if (indexOf == 0) {
             return message.substring(2, message.length);
         } else if (indexOf > 0) {
@@ -884,7 +884,7 @@ dictUtilServices.factory('dictUtilSer', ["$q", "$http", "$timeout", "$state", "l
         var result = [];
         for (var i = 0; i < size; i++) {
             var message = listMessage[i];
-            var indexOf = checkExistNewlineinMessage(message);
+            var indexOf = service.checkExistNewlineinMessage(message);
             if (indexOf != -1) {
 
             } else {

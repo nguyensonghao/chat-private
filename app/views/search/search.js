@@ -22,6 +22,7 @@ angular.module('mazii')
     var showKanjiDraw = false;
     var currentQuery = '';
     var tabName;
+    var showSuggestSearch;
     
     $scope.showKanjiDrawTable = function () {
         showKanjiDraw = !showKanjiDraw;

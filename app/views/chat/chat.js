@@ -231,7 +231,6 @@ angular.module('mazii')
 
     // Nhận tin nhắn public
     socket.on('receive-message-public', function (msg) {
-        console.log(msg);
         if (dictUtilSer.renderHtmlMessage(msg).length > 1) {
             var dubMessage = dictUtilSer.renderHtmlMessage(msg);
             var message = {
@@ -252,7 +251,8 @@ angular.module('mazii')
                 message : msg.content,
                 index : msg.index,
                 date_send : msg.date_send,
-                userId : msg.userId
+                userId : msg.userId, 
+                newLine : false
             }
             $scope.listMessage.push(message);
         }        

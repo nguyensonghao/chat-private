@@ -270,7 +270,6 @@ if(err) {
     
     // Hàm gửi tin nhắn public
     socket.on('send-message-public', function (msg) {
-        console.log(msg);
         msg.user.username = msg.user.username;
         ++currentIndexMessage;
 

@@ -49,7 +49,7 @@
                 <th class="table-col-1">#</th>
                 <th class="table-col-2">Từ</th>
                 <th class="table-col-3">Hiragana</th>
-                <th class="table-col-4">Hán Việt</th>
+                <th class="table-col-4 td-hidden">Hán Việt</th>
                 <th class="table-col-5">Nghĩa</th>
               </tr>
             </thead>
@@ -58,7 +58,7 @@
                     <td class="table-col-1">{{ $index + 1 }}</td>
                     <td class="table-col-2" ng-click="search(exam.w)">{{ exam.w }}</td>
                     <td class="table-col-3">{{ exam.p }}</td>
-                    <td class="table-col-4">{{ exam.h }}</td>
+                    <td class="table-col-4 td-hidden">{{ exam.h }}</td>
                     <td class="table-col-5">{{ exam.m }}</td>
                 </tr>
             </tbody>

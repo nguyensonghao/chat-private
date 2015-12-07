@@ -3618,7 +3618,7 @@ nav.navbar.navbar-fixed-top li{
 }
 
 .kanji-draw svg {
-    top: -15px;
+    /*top: -15px;*/
 }
 
 .kanji-container .button-collapse {

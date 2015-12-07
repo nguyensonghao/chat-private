@@ -152,7 +152,6 @@ angular.module('mazii')
 
     // Lấy thông tin khi người dùng đăng nhập thành công
     socket.on('login-success', function (data) {
-        console.log('test');
         console.log(data);
         $rootScope.user = data;
         $scope.user = data;

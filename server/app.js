@@ -49,7 +49,15 @@ if(err) {
     
     socket.on('user-join-public', function (user) {
         if (util.check_exits_email(user, listUser)) {
-            console.log('exist email'); // Thực ra email không thể trùng
+            collectionUser.find({fbId : user.id}).toArray(function (err, item) {
+                if (err) {
+                    console.log('error get list message');
+                } else {
+                    currentUser = item[0];
+                    users[currentUser._id] = socket;
+                    socket.emit('login-success', util.remove_email(currentUser));
+                }
+            })
         } else {
             // insert user to database
             console.log(user);

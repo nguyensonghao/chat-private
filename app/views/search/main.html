@@ -30,6 +30,11 @@
         <span><b>{{ item.split(' ')[0] }}</b> {{ item.replace(item.split(' ')[0], '') }} </span>
     </div>
 </div>
+
+<div class="notify-new-version widget-container" ng-if="showNotifynewVersion && !startSearch">
+    <ng-notify></ng-notify>
+</div>
+
 <div class="tab-container col-md-12 col-xs-12 no-padding">
     <div label="Từ vựng" ng-if="tabSelected == 0" class="col-md-6 col-xs-12 result-word">
         <div class="words-list" ng-if="words != null">

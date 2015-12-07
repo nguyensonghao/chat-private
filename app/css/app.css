@@ -744,3 +744,7 @@
 #kanji-detail-result .kanji-draw-container {
     height: 250px;
 }
+
+.notify-new-version {
+    margin-top: 50px;
+}

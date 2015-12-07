@@ -18,6 +18,8 @@ angular.module('mazii')
     $scope.showLoading = false;
     $scope.currentKanjiSelected = 0;
     $scope.noResults = false;
+    $scope.showNotifynewVersion = SHOW_NOTIFY_NEW_VERSION;
+    $scope.startSearch = false;
 
     var showKanjiDraw = false;
     var currentQuery = '';
@@ -245,7 +247,7 @@ angular.module('mazii')
     }
     
     $scope.startQuery = function (query, forceVietnamese) {
-        
+        $scope.startSearch = true;
         if (currentTimeoutFastSearch != null) {
             clearTimeout(currentTimeoutFastSearch);
         }

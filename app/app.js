@@ -1,5 +1,6 @@
 var initSearchCtrl = false;
 SERVER_ADRESS = 'http://crazyjapanese.com:8989';
+SHOW_NOTIFY_NEW_VERSION = true;
 
 // Declare app level module which depends on views, and components
 angular.module('mazii', [

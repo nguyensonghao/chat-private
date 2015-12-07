@@ -453,7 +453,7 @@ angular.module('mazii')
                     index : listMessage[i].index,
                     date_send : listMessage[i].date_send,
                     userId : listMessage[i].userId,
-                    newLine : false;
+                    newLine : false
                 }
             }        
             $scope.listMessage.unshift(message);

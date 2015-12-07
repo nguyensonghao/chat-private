@@ -21,6 +21,7 @@ angular.module('mazii')
 
     var showKanjiDraw = false;
     var currentQuery = '';
+    var tabName;
     
     $scope.showKanjiDrawTable = function () {
         showKanjiDraw = !showKanjiDraw;
@@ -151,7 +152,6 @@ angular.module('mazii')
     }
     
     $scope.changeTypeSearch = function (id, noCallSearch) {
-        var tabName;
         if (id != $scope.tabSelected) {
             $scope.tabSelected = id;
         } else {

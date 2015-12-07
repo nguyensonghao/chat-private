@@ -184,10 +184,12 @@
   <ng-footer></ng-footer>
 
   <div class="modal fade" id="instant-search" ng-if="enableInstantView">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-jlpt">
       <div class="modal-content">
         <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close close-modal-jlpt" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
             <div class="tab-container">
               <div label="Từ vựng" ng-if="tabSelected == 0">
                   <div class="words-list" ng-if="words != null">
@@ -238,7 +240,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

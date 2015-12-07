@@ -703,3 +703,34 @@
 .active-suggest span {
     color: white;
 }
+
+.close-modal-jlpt {
+    height: 40px;
+    width: 40px;
+    background: #FF5200 !important;
+    z-index: 10000;
+    right: -10px !important;
+    opacity: 1;
+    border-radius: 50%;
+    top: -10px !important;
+    color: white;
+}
+
+.close-modal-jlpt:hover {
+    color: #E2E1E1
+}
+
+@media (min-width: 768px) {
+    .modal-jlpt {
+        width: 700px !important;
+        margin: 30px auto;
+    }
+}
+
+.kanji-draw-again {
+    position: relative;
+}
+
+#kanji-detail-result .example-kanji {
+    background: transparent !important;
+}

@@ -119,10 +119,12 @@ angular.module('mazii')
 
     $scope.logoutFacebook = function () {
         authServ.logoutFacebook();
-        user = $scope.user = null;
+        user = $scope.user = $rootScope.user = null;
         loadData();
         resetDataWhenLogout();
-        $scope.$apply();
+        if(!$scope.$$phase) {
+            $scope.$apply();
+        }
     }
 
     var resetDataWhenLogout = function () {
@@ -244,8 +246,7 @@ angular.module('mazii')
                 newLine : true
             }
             $scope.listMessage.push(message);
-        } else {
-//            msg = dictUtilSer.renderHtmlMessage(msg);
+        } else{
             var message = {
                 _id : msg._id,
                 username : msg.username,

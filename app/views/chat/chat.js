@@ -184,7 +184,8 @@ angular.module('mazii')
                     message : listMessage[i].content,
                     index : index,
                     date_send : listMessage[i].date_send,
-                    userId : listMessage[i].userId
+                    userId : listMessage[i].userId,
+                    newLine : false
                 }
             }        
             $scope.listMessage.unshift(message);
@@ -451,7 +452,8 @@ angular.module('mazii')
                     message : listMessage[i].content,
                     index : listMessage[i].index,
                     date_send : listMessage[i].date_send,
-                    userId : listMessage[i].userId
+                    userId : listMessage[i].userId,
+                    newLine : false;
                 }
             }        
             $scope.listMessage.unshift(message);
@@ -489,6 +491,8 @@ angular.module('mazii')
         if (dictUtilSer.renderHtmlMessagePrivate(msg).length > 1) {
             msg.newLine = true;
             msg.message = dictUtilSer.renderHtmlMessagePrivate(msg);
+        } else {
+            msg.newLine = false;
         }
         $scope.listMessagePrivate.push(msg);
         $('.list-message-private').animate({ scrollTop: 10000 }, 500);

@@ -315,6 +315,7 @@
   <script src="libs/parse.min.js"></script>
   <script src="libs/socket.io.js"></script>
   <script src="libs/scrollheader.js"></script>
+  <script src="libs/fastclick.js"></script>
   
     
   <script src="bower_components/angular/angular.js"></script>
@@ -364,6 +365,11 @@
   <script src="views/about/about.js"></script>
   <script src="views/chat/chat.js"></script>
   <script src="views/term/term.js"></script>
+  <script>
+  	$(function() {
+	    FastClick.attach(document.body);
+	});
+  </script>
 
 </body>
 </html>

@@ -119,10 +119,12 @@ angular.module('mazii')
 
     $scope.logoutFacebook = function () {
         authServ.logoutFacebook();
-        user = $scope.user = null;
+        user = $scope.user = $rootScope.user = null;
         loadData();
         resetDataWhenLogout();
-        $scope.$apply();
+        if(!$scope.$$phase) {
+            $scope.$apply();
+        }
     }
 
     var resetDataWhenLogout = function () {

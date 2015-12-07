@@ -371,8 +371,13 @@
 
 		<div class="chat-list-user" ng-if="!showLogin && tabScreen == 7">
 			<div class="information-list-user">
-				<p>Hiện tại đang có {{listUser.length + 1}} người đang online</p>
-				<p>Hãy chọn 1 người bạn để trò chuyện nào</p>
+				<span ng-if="listUser.length > 0">
+					<p>Hiện tại đang có {{listUser.length + 1}} người đang online</p>
+					<p>Hãy chọn 1 người bạn để trò chuyện nào</p>
+				</span>
+				<p ng-if="listUser.length == 0">
+					Hiện tại có duy nhất bạn đang online
+				</p>
 			</div>
 		</div>
 	</div>

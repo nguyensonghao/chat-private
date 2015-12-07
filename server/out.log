@@ -4843,3 +4843,128 @@ user is updated online
 insert message success
 insert message success
 insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+insert message success
+insert message success
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+Listening on http://127.0.0.1:9500/
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+update user success
+{ name: 'Linh Ngọc',
+  id: '910678172353513',
+  email: '910678172353513@gmail.com' }
+insert user success
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+{ username: 'Linh Ngọc',
+  date_register: '12/6/2015 21:57:47',
+  fbId: '910678172353513',
+  status: 1,
+  _id: '5664f5abe61a3a2064f8fe53' }
+user is updated online
+{ _id: '5664f5abe61a3a2064f8fe53',
+  username: 'Linh Ngọc',
+  date_register: '12/6/2015 21:57:47',
+  fbId: '910678172353513',
+  status: 1 }
+user is updated online
+insert message success
+insert message success
+insert message success
+insert message success
+insert message success
+update user success
+{ _id: '56600fce89f1c05a2052ae10',
+  username: 'Nguyễn Song Hào',
+  date_register: '12/3/2015 4:47:58',
+  fbId: '778207895658461',
+  status: 0 }
+user is updated online
+update user success
+exist email
+{ name: 'Nguyễn Song Hào',
+  id: '778207895658461',
+  email: '778207895658461@gmail.com' }
+user is updated online
+insert message success
+{ _id: '56600fce89f1c05a2052ae10',
+  username: 'Nguyễn Song Hào',
+  date_register: '12/3/2015 4:47:58',
+  fbId: '778207895658461',
+  status: 0 }
+user is updated online

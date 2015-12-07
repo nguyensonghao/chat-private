@@ -245,7 +245,7 @@ angular.module('mazii')
             }
             $scope.listMessage.push(message);
         } else {
-            msg = dictUtilSer.renderHtmlMessage(msg);
+//            msg = dictUtilSer.renderHtmlMessage(msg);
             var message = {
                 _id : msg._id,
                 username : msg.username,

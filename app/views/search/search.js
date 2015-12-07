@@ -151,6 +151,7 @@ angular.module('mazii')
     }
     
     $scope.changeTypeSearch = function (id, noCallSearch) {
+        var tabName;
         if (id != $scope.tabSelected) {
             $scope.tabSelected = id;
         } else {

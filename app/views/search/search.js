@@ -21,10 +21,6 @@ angular.module('mazii')
 
     var showKanjiDraw = false;
     var currentQuery = '';
-
-    var string = {};
-    string.content = 'nguyensonghao \n hehe';
-    console.log(dictUtilSer.renderHtmlMessage(string));
     
     $scope.showKanjiDrawTable = function () {
         showKanjiDraw = !showKanjiDraw;

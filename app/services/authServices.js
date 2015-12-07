@@ -51,11 +51,9 @@ authServ.factory('authServ', ["$rootScope", "$q", "$http", "$timeout", "$statePa
 		    		}
 		    		$rootScope.user = data;
 		    		$rootScope.$broadcast('loadFBDone');
-		    		console.log('user login');
 		    	})
 		    } else {
 		    	$rootScope.$broadcast('loadFBDone');
-		    	console.log('user logout');
 		    }
 		});
 

@@ -1,6 +1,6 @@
 var initSearchCtrl = false;
-SERVER_ADRESS = 'http://crazyjapanese.com:8989';
-SHOW_NOTIFY_NEW_VERSION = true;
+var SERVER_ADRESS = 'http://crazyjapanese.com:8989';
+var SHOW_NOTIFY_NEW_VERSION = true;
 
 // Declare app level module which depends on views, and components
 angular.module('mazii', [
@@ -10,22 +10,21 @@ angular.module('mazii', [
   'mazii.service.util',
   'mazii.service.search',
   'mazii.service.auth',
-  'mazii.service.auth-test',
   'ngAudio',
-  'ngSanitize'
-  //'templates-main'
+  'ngSanitize',
+  'templates-main'
 ])
 
 .config(["$stateProvider", "$urlRouterProvider", "$sceProvider", function($stateProvider, $urlRouterProvider, $sceProvider) {
     
     $urlRouterProvider.otherwise('search');
-    $urlRouterProvider.when("/search?type&query", function ($match, $stateParams) {
+    $urlRouterProvider.when("/search?type&query", ["$match", "$stateParams", function ($match, $stateParams) {
         if (initSearchCtrl) {
             return true;
         }
         
         return false;
-    });
+    }]);
     
     
     $stateProvider
@@ -142,13 +141,13 @@ angular.module('mazii', [
     $sceProvider.enabled(false);
 }])
 
-.run(["$rootScope", "$state", "$timeout", "maziiServ", "dictUtilSer", "historyServ", "$stateParams", "$location", "authServ", "authServTest",
- function($rootScope, $state, $timeout, maziiServ, dictUtilSer, historyServ, $stateParams, $location, authServ, authServTest) {
+.run(["$rootScope", "$state", "$timeout", "maziiServ", "dictUtilSer", "historyServ", "$stateParams", "$location", "authServ",
+ function($rootScope, $state, $timeout, maziiServ, dictUtilSer, historyServ, $stateParams, $location, authServ) {
     
     // Load facebook SDK
     window.fbAsyncInit = function() {
         FB.init({
-          appId      : '507429472761274',
+          appId      : '1428630557429556',
           xfbml      : true,
           version    : 'v2.5'
         });

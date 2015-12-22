@@ -45,10 +45,10 @@ if(err) {
     var collectionMessage = db.collection('message');
     var collectionMessagePrivate = db.collection('message_private');
 
-    // Người dùng đăng nhập vào hệ thống
-    
+    // Người dùng đăng nhập vào hệ thống    
     socket.on('user-join-public', function (user) {
         if (util.check_exits_email(user, listUser)) {
+            console.log('login exits user');
             collectionUser.find({fbId : user.id}).toArray(function (err, item) {
                 if (err) {
                     console.log('error get list message');
@@ -60,7 +60,7 @@ if(err) {
             })
         } else {
             // insert user to database
-            console.log(user);
+            console.log('login user');
             var userInsert = {
                 username : user.name,
                 email : user.email,
